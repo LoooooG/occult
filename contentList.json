@@ -1,0 +1,496 @@
+{
+  "tagId": 1,
+  "list": [
+    {
+      "user": {
+        "uid": 10000044,
+        "hetunNum": 2000044,
+        "nickname": "Lock",
+        "portrait": "http://img.check.hetunlive.com/videoclips/operateUser/d180eb450497426da32e5ec3bd93de96.png"
+      },
+      "count": {
+        "play": 13,
+        "comment": 15,
+        "thumbup": 29032
+      },
+      "contentTag": {
+        "list": [
+          {
+            "id": 1,
+            "name": "图解电影"
+          },
+          {
+            "id": 2,
+            "name": "奇趣佚事"
+          }
+        ]
+      },
+      "media": {
+        "type": "1",
+        "video": {
+          "cover": "http://img.check.hetunlive.com/videoclips/operateUser/d180eb450497426da32e5ec3bd93de96.png",
+          "url": "http://tanzi27niu.cdsb.mobi/wps/wp-content/uploads/2017/05/2017-05-17_17-33-30.mp4"
+        },
+        "article": {
+          "list": [
+            {
+              "index": 0,
+              "text": "智障铲屎官：让我们一起舞蹈！"
+            },
+            {
+              "index": 1,
+              "text": "猫：？？？？！"
+            }
+          ]
+        }
+      },
+      "createTime": 1505457620837,
+      "description": "视频描述B",
+      "id": 1,
+      "title": "视频A"
+    },
+    {
+      "user": {
+        "uid": 10000045,
+        "hetunNum": 2000045,
+        "nickname": "LooooG",
+        "portrait": "http://img.check.hetunlive.com/videoclips/operateUser/d180eb450497426da32e5ec3bd93de96.png"
+      },
+      "count": {
+        "play": 13,
+        "comment": 1212,
+        "thumbup": 95
+      },
+      "contentTag": {
+        "list": [
+          {
+            "id": 3,
+            "name": "日常鬼话"
+          }
+        ]
+      },
+      "media": {
+        "type": "3",
+        "image": {
+          "list": [
+            {
+              "thumbnail": "https://wx3.sinaimg.cn/mw690/92e8647aly1fen8vihqtrg20b406fu0x.gif",
+              "high": "http://img.check.hetunlive.com/videoclips/operateUser/d180eb450497426da32e5ec3bd93de96.png",
+              "low": "http://img.check.hetunlive.com/videoclips/operateUser/d180eb450497426da32e5ec3bd93de96.png",
+              "type": 1,
+              "width": 640,
+              "height": 1920
+            },
+            {
+              "thumbnail": "https://wx3.sinaimg.cn/mw690/92e8647aly1fen8vihqtrg20b406fu0x.gif",
+              "high": "http://img.check.hetunlive.com/videoclips/operateUser/d180eb450497426da32e5ec3bd93de96.png",
+              "low": "http://img.check.hetunlive.com/videoclips/operateUser/d180eb450497426da32e5ec3bd93de96.png",
+              "type": 1,
+              "width": 640,
+              "height": 1920
+            },
+            {
+              "thumbnail": "https://wx3.sinaimg.cn/mw690/92e8647aly1fen8vihqtrg20b406fu0x.gif",
+              "high": "http://img.check.hetunlive.com/videoclips/operateUser/d180eb450497426da32e5ec3bd93de96.png",
+              "low": "http://img.check.hetunlive.com/videoclips/operateUser/d180eb450497426da32e5ec3bd93de96.png",
+              "type": 1,
+              "width": 640,
+              "height": 1920
+            },
+            {
+              "thumbnail": "http://img.check.hetunlive.com/videoclips/operateUser/d180eb450497426da32e5ec3bd93de96.png",
+              "high": "http://img.check.hetunlive.com/videoclips/operateUser/d180eb450497426da32e5ec3bd93de96.png",
+              "low": "http://img.check.hetunlive.com/videoclips/operateUser/d180eb450497426da32e5ec3bd93de96.png",
+              "type": 1,
+              "width": 640,
+              "height": 1920
+            },
+            {
+              "thumbnail": "http://img.check.hetunlive.com/videoclips/operateUser/d180eb450497426da32e5ec3bd93de96.png",
+              "high": "http://img.check.hetunlive.com/videoclips/operateUser/d180eb450497426da32e5ec3bd93de96.png",
+              "low": "http://img.check.hetunlive.com/videoclips/operateUser/d180eb450497426da32e5ec3bd93de96.png",
+              "type": 1,
+              "width": 640,
+              "height": 1920
+            },
+            {
+              "thumbnail": "http://img.check.hetunlive.com/videoclips/operateUser/d180eb450497426da32e5ec3bd93de96.png",
+              "high": "http://img.check.hetunlive.com/videoclips/operateUser/d180eb450497426da32e5ec3bd93de96.png",
+              "low": "http://img.check.hetunlive.com/videoclips/operateUser/d180eb450497426da32e5ec3bd93de96.png",
+              "type": 1,
+              "width": 640,
+              "height": 1920
+            },
+            {
+              "thumbnail": "http://img.check.hetunlive.com/videoclips/operateUser/d180eb450497426da32e5ec3bd93de96.png",
+              "high": "http://img.check.hetunlive.com/videoclips/operateUser/d180eb450497426da32e5ec3bd93de96.png",
+              "low": "http://img.check.hetunlive.com/videoclips/operateUser/d180eb450497426da32e5ec3bd93de96.png",
+              "type": 1,
+              "width": 640,
+              "height": 1920
+            },
+            {
+              "thumbnail": "http://img.check.hetunlive.com/videoclips/operateUser/d180eb450497426da32e5ec3bd93de96.png",
+              "high": "http://img.check.hetunlive.com/videoclips/operateUser/d180eb450497426da32e5ec3bd93de96.png",
+              "low": "http://img.check.hetunlive.com/videoclips/operateUser/d180eb450497426da32e5ec3bd93de96.png",
+              "type": 1,
+              "width": 640,
+              "height": 1920
+            },
+            {
+              "thumbnail": "http://img.check.hetunlive.com/videoclips/operateUser/d180eb450497426da32e5ec3bd93de96.png",
+              "high": "http://img.check.hetunlive.com/videoclips/operateUser/d180eb450497426da32e5ec3bd93de96.png",
+              "low": "http://img.check.hetunlive.com/videoclips/operateUser/d180eb450497426da32e5ec3bd93de96.png",
+              "type": 1,
+              "width": 640,
+              "height": 1920
+            }
+          ]
+        },
+        "article": {
+          "list": [
+            {
+              "index": 0,
+              "text": "文字AAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+            },
+            {
+              "index": 1,
+              "text": "文字BBBBBBBBBBBBB"
+            },
+            {
+              "index": 2,
+              "text": "文字CCCCCCCCCCCCC"
+            }
+          ]
+        }
+      },
+      "createTime": 1505457620884,
+      "description": "图文描述B",
+      "id": 2,
+      "title": "图文B"
+    },
+    {
+      "user": {
+        "uid": 10000044,
+        "hetunNum": 2000044,
+        "nickname": "Lock",
+        "portrait": "http://img.check.hetunlive.com/videoclips/operateUser/d180eb450497426da32e5ec3bd93de96.png"
+      },
+      "count": {
+        "play": 13,
+        "comment": 15,
+        "thumbup": 29032
+      },
+      "contentTag": {
+        "list": [
+          {
+            "id": 1,
+            "name": "图解电影"
+          },
+          {
+            "id": 2,
+            "name": "奇趣佚事"
+          }
+        ]
+      },
+      "media": {
+        "type": "1",
+        "video": {
+          "cover": "http://img.check.hetunlive.com/videoclips/operateUser/d180eb450497426da32e5ec3bd93de96.png",
+          "url": "http://tanzi27niu.cdsb.mobi/wps/wp-content/uploads/2017/05/2017-05-17_17-33-30.mp4"
+        },
+        "article": {
+          "list": [
+            {
+              "index": 0,
+              "text": "这些年来，苹果产品的包装越来越精简，能省的都尽量省，首次拆开产品包装的乐趣不如从前了。以前 Mac 和 iPod 附赠的擦屏软布现在也没有了 ，但有两个东西从来没有变过，苹果产品的说明书，和与说明书放在一起的苹果 logo 贴纸。这是苹果公司一个久远的传统，在产品包装中附上苹果公司的 logo 贴纸最早要追溯到 1977 年发布的 Apple II 。这是苹果第一款获得巨大市场成功的产品，在整个 70 年代和 80 年代 Apple II 系列电脑是苹果的主要收入来源。也是在 1977 年，Apple II 发布之前，乔布斯找到了一个叫 Rob Janoff 的设计师，让他给苹果设计一个新的 logo ，在此之前苹果的标志是「牛顿坐在苹果树下」。没过多久，经典的彩虹色苹果 logo 诞生了。"
+            }
+          ]
+        }
+      },
+      "createTime": 1505457620837,
+      "description": "视频描述B",
+      "id": 3,
+      "title": "视频A"
+    },
+    {
+      "user": {
+        "uid": 10000044,
+        "hetunNum": 2000044,
+        "nickname": "Lock",
+        "portrait": "http://img.check.hetunlive.com/videoclips/operateUser/d180eb450497426da32e5ec3bd93de96.png"
+      },
+      "count": {
+        "play": 13,
+        "comment": 15,
+        "thumbup": 29032
+      },
+      "contentTag": {
+        "list": [
+          {
+            "id": 1,
+            "name": "图解电影"
+          },
+          {
+            "id": 2,
+            "name": "奇趣佚事"
+          }
+        ]
+      },
+      "media": {
+        "type": "1",
+        "video": {
+          "cover": "http://img.check.hetunlive.com/videoclips/operateUser/d180eb450497426da32e5ec3bd93de96.png",
+          "url": "http://tanzi27niu.cdsb.mobi/wps/wp-content/uploads/2017/05/2017-05-17_17-33-30.mp4"
+        },
+        "article": {
+          "list": [
+            {
+              "index": 0,
+              "text": "智障铲屎官：让我们一起舞蹈！"
+            },
+            {
+              "index": 1,
+              "text": "猫：？？？？！"
+            }
+          ]
+        }
+      },
+      "createTime": 1505457620837,
+      "description": "视频描述B",
+      "id": 4,
+      "title": "视频A"
+    },
+    {
+      "user": {
+        "uid": 10000044,
+        "hetunNum": 2000044,
+        "nickname": "Lock",
+        "portrait": "http://img.check.hetunlive.com/videoclips/operateUser/d180eb450497426da32e5ec3bd93de96.png"
+      },
+      "count": {
+        "play": 13,
+        "comment": 15,
+        "thumbup": 29032
+      },
+      "contentTag": {
+        "list": [
+          {
+            "id": 1,
+            "name": "图解电影"
+          },
+          {
+            "id": 2,
+            "name": "奇趣佚事"
+          }
+        ]
+      },
+      "media": {
+        "type": "1",
+        "video": {
+          "cover": "http://img.check.hetunlive.com/videoclips/operateUser/d180eb450497426da32e5ec3bd93de96.png",
+          "url": "http://tanzi27niu.cdsb.mobi/wps/wp-content/uploads/2017/05/2017-05-17_17-33-30.mp4"
+        },
+        "article": {
+          "list": [
+            {
+              "index": 0,
+              "text": "智障铲屎官：让我们一起舞蹈！"
+            },
+            {
+              "index": 1,
+              "text": "猫：？？？？！"
+            }
+          ]
+        }
+      },
+      "createTime": 1505457620837,
+      "description": "视频描述B",
+      "id": 5,
+      "title": "视频A"
+    },
+    {
+      "user": {
+        "uid": 10000044,
+        "hetunNum": 2000044,
+        "nickname": "Lock",
+        "portrait": "http://img.check.hetunlive.com/videoclips/operateUser/d180eb450497426da32e5ec3bd93de96.png"
+      },
+      "count": {
+        "play": 13,
+        "comment": 15,
+        "thumbup": 29032
+      },
+      "contentTag": {
+        "list": [
+          {
+            "id": 1,
+            "name": "图解电影"
+          },
+          {
+            "id": 2,
+            "name": "奇趣佚事"
+          }
+        ]
+      },
+      "media": {
+        "type": "1",
+        "video": {
+          "cover": "http://img.check.hetunlive.com/videoclips/operateUser/d180eb450497426da32e5ec3bd93de96.png",
+          "url": "http://tanzi27niu.cdsb.mobi/wps/wp-content/uploads/2017/05/2017-05-17_17-33-30.mp4"
+        },
+        "article": {
+          "list": [
+            {
+              "index": 0,
+              "text": "智障铲屎官：让我们一起舞蹈！"
+            },
+            {
+              "index": 1,
+              "text": "猫：？？？？！"
+            }
+          ]
+        }
+      },
+      "createTime": 1505457620837,
+      "description": "视频描述B",
+      "id": 6,
+      "title": "视频A"
+    },
+    {
+      "user": {
+        "uid": 10000044,
+        "hetunNum": 2000044,
+        "nickname": "Lock",
+        "portrait": "http://img.check.hetunlive.com/videoclips/operateUser/d180eb450497426da32e5ec3bd93de96.png"
+      },
+      "count": {
+        "play": 13,
+        "comment": 15,
+        "thumbup": 29032
+      },
+      "contentTag": {
+        "list": [
+          {
+            "id": 1,
+            "name": "图解电影"
+          },
+          {
+            "id": 2,
+            "name": "奇趣佚事"
+          }
+        ]
+      },
+      "media": {
+        "type": "2",
+        "audio": {
+          "playCount": 12345678,
+          "length":98000,
+          "url": "http://tanzi27niu.cdsb.mobi/wps/wp-content/uploads/2017/05/2017-05-17_17-33-30.mp4"
+        },
+        "article": {
+          "list": [
+            {
+              "index": 0,
+              "text": "智障铲屎官：让我们一起舞蹈！"
+            }
+          ]
+        }
+      },
+      "createTime": 1505457620837,
+      "description": "视频描述B",
+      "id": 7,
+      "title": "视频A"
+    },
+    {
+      "user": {
+        "uid": 10000044,
+        "hetunNum": 2000044,
+        "nickname": "Lock",
+        "portrait": "http://img.check.hetunlive.com/videoclips/operateUser/d180eb450497426da32e5ec3bd93de96.png"
+      },
+      "count": {
+        "play": 13,
+        "comment": 15,
+        "thumbup": 29032
+      },
+      "contentTag": {
+        "list": [
+          {
+            "id": 1,
+            "name": "图解电影"
+          },
+          {
+            "id": 2,
+            "name": "奇趣佚事"
+          }
+        ]
+      },
+      "media": {
+        "type": "2",
+        "audio": {
+          "playCount": 12345678,
+          "length":98000,
+          "url": "http://tanzi27niu.cdsb.mobi/wps/wp-content/uploads/2017/05/2017-05-17_17-33-30.mp4"
+        },
+        "article": {
+          "list": [
+            {
+              "index": 0,
+              "text": "智障铲屎官：让我们一起舞蹈！"
+            }
+          ]
+        }
+      },
+      "createTime": 1505457620837,
+      "description": "视频描述B",
+      "id": 8,
+      "title": "视频A"
+    },
+    {
+      "user": {
+        "uid": 10000044,
+        "hetunNum": 2000044,
+        "nickname": "Lock",
+        "portrait": "http://img.check.hetunlive.com/videoclips/operateUser/d180eb450497426da32e5ec3bd93de96.png"
+      },
+      "count": {
+        "play": 13,
+        "comment": 15,
+        "thumbup": 29032
+      },
+      "contentTag": {
+        "list": [
+          {
+            "id": 1,
+            "name": "图解电影"
+          },
+          {
+            "id": 2,
+            "name": "奇趣佚事"
+          }
+        ]
+      },
+      "media": {
+        "type": "2",
+        "audio": {
+          "playCount": 12345678,
+          "length":98000,
+          "url": "http://tanzi27niu.cdsb.mobi/wps/wp-content/uploads/2017/05/2017-05-17_17-33-30.mp4"
+        },
+        "article": {
+          "list": [
+            {
+              "index": 0,
+              "text": "智障铲屎官：让我们一起舞蹈！"
+            }
+          ]
+        }
+      },
+      "createTime": 1505457620837,
+      "description": "视频描述B",
+      "id": 9,
+      "title": "视频A"
+    }
+  ]
+}

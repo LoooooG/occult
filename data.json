@@ -1,0 +1,50 @@
+{
+  "content": {
+    "user": {
+      "uid": 10000044,
+      "hetunNum": 2000044,
+      "nickname": "Lock",
+      "portrait": "http://img.check.hetunlive.com/videoclips/operateUser/d180eb450497426da32e5ec3bd93de96.png"
+    },
+    "count": {
+      "play": 13,
+      "comment": 15,
+      "thumbup": 29032
+    },
+    "contentTag": {
+      "list": [
+        {
+          "id": 1,
+          "name": "图解电影"
+        },
+        {
+          "id": 2,
+          "name": "奇趣佚事"
+        }
+      ]
+    },
+    "media": {
+      "type": "1",
+      "video": {
+        "cover": "http://img.check.hetunlive.com/videoclips/operateUser/d180eb450497426da32e5ec3bd93de96.png",
+        "url": "http://tanzi27niu.cdsb.mobi/wps/wp-content/uploads/2017/05/2017-05-17_17-33-30.mp4"
+      },
+      "article": {
+        "list": [
+          {
+            "index": 0,
+            "text": "智障铲屎官：让我们一起舞蹈！"
+          },
+          {
+            "index": 1,
+            "text": "猫：？？？？！"
+          }
+        ]
+      }
+    },
+    "createTime": 1505457620837,
+    "description": "视频描述B",
+    "id": 1,
+    "title": "视频A"
+  }
+}
