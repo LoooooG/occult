@@ -27,15 +27,15 @@ const app = express()
 const compiler = webpack(webpackConfig)
 
 /* api start */
-// var appData = require('../data.json')
-// var content = appData.content
-// var apiRoutes = express.Router()
-// apiRoutes.get('/content', function(req, res){
-//     res.json({
-//         data: content
-//     })
-// })
-// app.use('/api', apiRoutes)
+var appData = require('../data.json')
+var content = appData.content
+var apiRoutes = express.Router()
+apiRoutes.get('/content', function(req, res){
+    res.json({
+        data: content
+    })
+})
+app.use('/api', apiRoutes)
 /* api end */
 
 const devMiddleware = require('webpack-dev-middleware')(compiler, {

@@ -14,12 +14,23 @@
     export default {
         name: 'Share',
         data () {
-            return {}
+            return {
+
+            }
         },
         components: {
             DownloadBar,
             ContentLayer,
             RecommendBlock
+        },
+        created() {
+            this.$http.get('/api/content').then((data) => {
+                // success
+                console.log(data.body.data);
+            }).catch((data) => {
+                // error
+
+            })
         }
     }
 </script>

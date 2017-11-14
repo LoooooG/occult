@@ -5,7 +5,7 @@
 </template>
 
 <script>
-    import DownloadOrOpen from '@/components/DownloadOrOpen';
+    import DownloadOrOpen from '@/components/common/DownloadOrOpen';
     export default {
         name: 'DownloadBar',
         data() {
@@ -22,9 +22,6 @@
 
 <style scoped>
     .download_box {
-        width: 100%;
-        min-height: 40px;
-        background: coral;
     }
 
     .download_box img {
