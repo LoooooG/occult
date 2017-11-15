@@ -7,6 +7,7 @@
 </template>
 
 <script>
+    import Url from '@/global/Url'
     import UserLayer from './UserLayer'
     import MediaLayer from './MediaLayer'
     import TagLayer from './TagLayer'
@@ -18,7 +19,7 @@
                 content: {
                     user: {nickname: '', portrait: ''},
                     contentTag: {list: []},
-                    media: {}
+                    media: {type: 0}
                 }
             }
         },

@@ -1,35 +1,50 @@
 <template>
     <div class="container">
-        <div v-if="getType == 0">UNKNOWN</div>
-        <div v-else-if="getType == 1">VIDEO</div>
-        <div v-else-if="getType == 2">AUDIO</div>
-        <div v-else-if="getType == 3">IMAGE</div>
-        <div v-else-if="getType == 4">ARTICLE</div>
-        <div v-else="getType == 5">AD</div>
+        <div v-if="getType == 0" class="base-margin-left-right">UNKNOWN</div>
+        <video-media-layer
+                :media="media"
+                v-else-if="getType == 1">VIDEO</video-media-layer>
+        <audio-media-layer
+                :media="media"
+                v-else-if="getType == 2">AUDIO</audio-media-layer>
+        <image-media-layer
+                :media="media"
+                v-else-if="getType == 3">IMAGE</image-media-layer>
+        <article-media-layer
+                :media="media"
+                v-else-if="getType == 4">ARTICLE</article-media-layer>
+        <a-d-media-layer
+                :media="media"
+                v-else="getType == 5">AD</a-d-media-layer>
     </div>
 </template>
 
 <script>
     import Global from '@/global/Global'
+    import VideoMediaLayer from './media/VideoMediaLayer'
+    import AudioMediaLayer from './media/AudioMediaLayer'
+    import ImageMediaLayer from './media/ImageMediaLayer'
+    import ArticleMediaLayer from './media/ArticleMediaLayer'
+    import ADMediaLayer from './media/ADMediaLayer'
+
     export default {
         name: 'MediaLayer',
         computed: {
             getType() {
-                if (Global.isDefined(this.media)) {
-                    if (Global.isDefined(this.media.type)) {
-                        return this.media.type
-                    }
-                }
-                return 0
+                return this.media.type
             }
         },
         props: {
-            media:{
-                type : Object
+            media: {
+                type: Object
             }
         },
-        mounted() {
-            console.log(this.media,'media');
+        components: {
+            VideoMediaLayer,
+            AudioMediaLayer,
+            ImageMediaLayer,
+            ArticleMediaLayer,
+            ADMediaLayer
         }
     }
 </script>
