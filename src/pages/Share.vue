@@ -1,9 +1,8 @@
 <template>
     <div class="container">
         <download-bar></download-bar>
-        <content-layer
-                :content="content"></content-layer>
-        <recommend-block></recommend-block>
+        <content-layer :content="getContent"></content-layer>
+        <recommend-block :recommend="getRecommend"></recommend-block>
     </div>
 </template>
 
@@ -17,7 +16,21 @@
         name: 'Share',
         data() {
             return {
-                content: {user: {nickname: '', portrait: ''}}
+                content: {
+                    user: {nickname: '', portrait: ''},
+                    contentTag: {list: []}
+                },
+                recommend: {
+                    list: []
+                }
+            }
+        },
+        computed: {
+            getContent() {
+                return this.content
+            },
+            getRecommend() {
+                return this.recommend
             }
         },
         components: {
@@ -36,6 +49,11 @@
             }).catch(response => {
                 // error
                 console.log(response.status + ': ' + response.statusText)
+            })
+
+            // 获取大家都在看内容
+            this.$http.get('/api/recommend').then(response => {
+                this.recommend = response.body.data
             })
         }
     }

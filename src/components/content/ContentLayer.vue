@@ -1,11 +1,8 @@
 <template>
     <div class="content">
-        <user-layer
-                :nickname="content.user.nickname"
-                :portrait="content.user.portrait">
-        </user-layer>
+        <user-layer :user="getUser"></user-layer>
         <media-layer></media-layer>
-        <tag-layer></tag-layer>
+        <tag-layer :contentTag="getContentTag"></tag-layer>
     </div>
 </template>
 
@@ -16,7 +13,14 @@
 
     export default {
         name: 'ContentLayer',
-        computed: {},
+        computed: {
+            getUser() {
+                return this.content.user
+            },
+            getContentTag() {
+                return this.content.contentTag
+            }
+        },
         components: {
             UserLayer,
             MediaLayer,

@@ -2,7 +2,7 @@
     <div class="user_layer base-margin-left-right clearfix">
         <img class="portrait" :src="getPortrait" alt="">
         <span class="nickname">{{getNickname}}</span>
-        <span class="follow blue">+关注</span>
+        <span class="follow">+关注</span>
     </div>
 </template>
 
@@ -12,25 +12,18 @@
     export default {
 
         name: 'UserLayer',
-        data() {
-            return {}
-        },
         computed: {
             getNickname() {
-                return this.nickname || "昵称"
+                return this.user.nickname || "昵称"
             },
             getPortrait() {
-                return this.portrait || DefPortrait
+                return this.user.portrait || DefPortrait
             }
         },
         props: {
-            nickname: {
-                type: String,
-                default: "昵称"
-            },
-            portrait: {
-                type: String,
-                default: DefPortrait
+            user: {
+                type: Object,
+                required: true
             }
         },
         mounted() {
@@ -52,6 +45,7 @@
         .follow {
             float: right;
             font-size: 12px;
+            color: $sub-primary;
         }
     }
 </style>
