@@ -21,6 +21,13 @@
 <script>
     export default {
         name: 'RecommendBlock',
+        data() {
+            return {
+                recommend: {
+                    list: []
+                }
+            }
+        },
         computed: {
             getRow() {
                 let row = []
@@ -41,11 +48,11 @@
                 return { background: "url(" + img + ")"}
             }
         },
-        props: {
-            recommend: {
-                type: Object,
-                required: true
-            }
+        created() {
+            // 获取大家都在看内容
+            this.$http.get('/api/recommend').then(response => {
+                this.recommend = response.body.data
+            })
         }
     }
 </script>
@@ -89,7 +96,7 @@
                     @include img-ratio-4-3;
                 }
                 .title {
-                    @include text-ellipsis;
+                    @include single-text-ellipsis;
                     display: block;
                     font-size: 12px;
                     color: $content-color;

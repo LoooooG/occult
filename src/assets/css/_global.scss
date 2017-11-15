@@ -129,10 +129,17 @@ a:active .blue {
   display: block
 }
 
-@mixin text-ellipsis {
+@mixin single-text-ellipsis {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+@mixin multi-text-ellipsis {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
 }
 
 @mixin img-ratio {
@@ -157,5 +164,9 @@ a:active .blue {
 }
 
 .text-ellipsis {
-  @include text-ellipsis;
+  @include single-text-ellipsis;
+}
+
+.multi-text-ellipsis {
+  @include multi-text-ellipsis;
 }

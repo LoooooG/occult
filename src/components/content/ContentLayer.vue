@@ -7,22 +7,40 @@
 </template>
 
 <script>
+    import Url from '@/global/Url'
     import UserLayer from './UserLayer'
     import MediaLayer from './MediaLayer'
     import TagLayer from './TagLayer'
 
     export default {
         name: 'ContentLayer',
+        data() {
+            return {
+                content: {
+                    user: {nickname: '', portrait: ''},
+                    contentTag: {list: []},
+                    media: {}
+                }
+            }
+        },
         components: {
             UserLayer,
             MediaLayer,
             TagLayer
         },
-        props: {
-            content: {
-                type: Object,
-                required: true
-            }
+        created() {
+            // 获取内容详情
+            let param = Url.getCommonParam();
+            param.id = 585
+            this.$http.post(Url.urlList.URL_MEDIA_GET, param).then(response => {
+                // success
+                this.content = response.body.data
+                console.log(this.content.media)
+                // console.log(response)
+            }).catch(response => {
+                // error
+                console.log(response.status + ': ' + response.statusText)
+            })
         }
     }
 </script>
