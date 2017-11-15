@@ -21,6 +21,10 @@
                     contentTag: {list: []}
                 },
                 media: {
+                    audio: {},
+                    image: {},
+                    video: {},
+                    article: {},
                     type: 0
                 },
                 recommend: {
@@ -40,7 +44,7 @@
             this.$http.post(Url.urlList.URL_MEDIA_GET, param).then(response => {
                 // success
                 this.content = response.body.data
-                console.log(this.content)
+                console.log(this.content.media)
                 // console.log(response)
             }).catch(response => {
                 // error

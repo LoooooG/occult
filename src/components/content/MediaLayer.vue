@@ -1,20 +1,26 @@
 <template>
     <div class="container">
-        <div v-if="media.type == 0">UNKNOWN</div>
-        <div v-else-if="media.type == 1">VIDEO</div>
-        <div v-else-if="media.type == 2">AUDIO</div>
-        <div v-else-if="media.type == 3">IMAGE</div>
-        <div v-else-if="media.type == 4">ARTICLE</div>
-        <div v-else="media.type == 5">AD</div>
+        <div v-if="getType == 0">UNKNOWN</div>
+        <div v-else-if="getType == 1">VIDEO</div>
+        <div v-else-if="getType == 2">AUDIO</div>
+        <div v-else-if="getType == 3">IMAGE</div>
+        <div v-else-if="getType == 4">ARTICLE</div>
+        <div v-else="getType == 5">AD</div>
     </div>
 </template>
 
 <script>
+    import Global from '@/global/Global'
     export default {
         name: 'MediaLayer',
         computed: {
             getType() {
-
+                if (Global.isDefined(this.media)) {
+                    if (Global.isDefined(this.media.type)) {
+                        return this.media.type
+                    }
+                }
+                return 0
             }
         },
         props: {
