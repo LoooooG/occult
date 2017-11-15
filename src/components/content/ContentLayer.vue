@@ -1,8 +1,8 @@
 <template>
     <div class="content">
-        <user-layer :user="getUser"></user-layer>
-        <media-layer></media-layer>
-        <tag-layer :contentTag="getContentTag"></tag-layer>
+        <user-layer :user="content.user"></user-layer>
+        <media-layer :media="content.media"></media-layer>
+        <tag-layer :contentTag="content.contentTag"></tag-layer>
     </div>
 </template>
 
@@ -13,14 +13,6 @@
 
     export default {
         name: 'ContentLayer',
-        computed: {
-            getUser() {
-                return this.content.user
-            },
-            getContentTag() {
-                return this.content.contentTag
-            }
-        },
         components: {
             UserLayer,
             MediaLayer,

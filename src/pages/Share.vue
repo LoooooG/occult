@@ -1,8 +1,8 @@
 <template>
     <div class="container">
         <download-bar></download-bar>
-        <content-layer :content="getContent"></content-layer>
-        <recommend-block :recommend="getRecommend"></recommend-block>
+        <content-layer :content="content"></content-layer>
+        <recommend-block :recommend="recommend"></recommend-block>
     </div>
 </template>
 
@@ -20,17 +20,12 @@
                     user: {nickname: '', portrait: ''},
                     contentTag: {list: []}
                 },
+                media: {
+                    type: 0
+                },
                 recommend: {
                     list: []
                 }
-            }
-        },
-        computed: {
-            getContent() {
-                return this.content
-            },
-            getRecommend() {
-                return this.recommend
             }
         },
         components: {
@@ -41,11 +36,12 @@
         created() {
             // 获取内容详情
             let param = Url.getCommonParam();
-            param.id = 611
+            param.id = 585
             this.$http.post(Url.urlList.URL_MEDIA_GET, param).then(response => {
                 // success
                 this.content = response.body.data
                 console.log(this.content)
+                // console.log(response)
             }).catch(response => {
                 // error
                 console.log(response.status + ': ' + response.statusText)
