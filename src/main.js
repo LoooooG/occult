@@ -5,7 +5,7 @@ import './assets/css/common.scss'
 import router from './router/router'
 import VueResource from 'vue-resource'
 Vue.use(VueResource)
-
+Vue.http.options.emulateJSON = true
 
 Vue.config.productionTip = false
 
@@ -16,7 +16,7 @@ new Vue({
     watch: {
         // 监视路由，参数为要目标路由和当前页面的路由
         '$route' (to, from){
-            console.log('to: ' + to.path + ', from: ' + from.path);
+            console.log('to: ' + to.path + ', from: ' + from.path)
         }
     }
 })

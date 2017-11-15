@@ -1,7 +1,7 @@
 <template>
     <div class="user_layer base-margin-left-right clearfix">
-        <img class="portrait" :src="portrait" alt="">
-        <span class="nickname">{{nickname}}</span>
+        <img class="portrait" :src="getPortrait" alt="">
+        <span class="nickname">{{getNickname}}</span>
         <span class="follow blue">+关注</span>
     </div>
 </template>
@@ -15,6 +15,14 @@
         data() {
             return {}
         },
+        computed: {
+            getNickname() {
+                return this.nickname || "昵称"
+            },
+            getPortrait() {
+                return this.portrait || DefPortrait
+            }
+        },
         props: {
             nickname: {
                 type: String,
@@ -24,6 +32,8 @@
                 type: String,
                 default: DefPortrait
             }
+        },
+        mounted() {
         }
     }
 </script>

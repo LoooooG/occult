@@ -29,10 +29,16 @@ const compiler = webpack(webpackConfig)
 /* api start */
 var appData = require('../data.json')
 var content = appData.content
+var recommend = appData.recommend
 var apiRoutes = express.Router()
 apiRoutes.get('/content', function(req, res){
     res.json({
         data: content
+    })
+})
+apiRoutes.get('/recommend', function(req, res){
+    res.json({
+        data: recommend
     })
 })
 app.use('/api', apiRoutes)

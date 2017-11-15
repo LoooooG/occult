@@ -1,21 +1,23 @@
 <template>
     <div class="container">
         <download-bar></download-bar>
-        <content-layer></content-layer>
+        <content-layer
+                :content="content"></content-layer>
         <recommend-block></recommend-block>
     </div>
 </template>
 
 <script>
-    import DownloadBar from '../components/common/DownloadBar'
-    import ContentLayer from '../components/content/ContentLayer'
-    import RecommendBlock from '../components/common/RecommendBlock'
+    import DownloadBar from '@/components/common/DownloadBar'
+    import ContentLayer from '@/components/content/ContentLayer'
+    import RecommendBlock from '@/components/common/RecommendBlock'
+    import Url from '@/global/Url';
 
     export default {
         name: 'Share',
-        data () {
+        data() {
             return {
-
+                content: {user: {nickname: '', portrait: ''}}
             }
         },
         components: {
@@ -24,12 +26,16 @@
             RecommendBlock
         },
         created() {
-            this.$http.get('/api/content').then((data) => {
+            // 获取内容详情
+            let param = Url.getCommonParam();
+            param.id = 611
+            this.$http.post(Url.urlList.URL_MEDIA_GET, param).then(response => {
                 // success
-                console.log(data.body.data);
-            }).catch((data) => {
+                this.content = response.body.data
+                console.log(this.content)
+            }).catch(response => {
                 // error
-
+                console.log(response.status + ': ' + response.statusText)
             })
         }
     }
@@ -39,6 +45,7 @@
     html, body {
         background: #fff;
     }
+
     .container {
         max-width: 1280px;
         margin: 0 auto;
