@@ -18,14 +18,8 @@
             return {
                 content: {
                     user: {nickname: '', portrait: ''},
-                    contentTag: {list: []}
-                },
-                media: {
-                    audio: {},
-                    image: {},
-                    video: {},
-                    article: {},
-                    type: 0
+                    contentTag: {list: []},
+                    media: {}
                 },
                 recommend: {
                     list: []

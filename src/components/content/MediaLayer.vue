@@ -26,7 +26,16 @@
         props: {
             media: {
                 type: Object,
-                required: true
+                required: true,
+                default() {
+                    return {
+                        audio: {},
+                        image: {},
+                        video: {},
+                        article: {},
+                        type: 0
+                    }
+                }
             }
         },
         mounted() {
