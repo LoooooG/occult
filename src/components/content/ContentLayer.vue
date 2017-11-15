@@ -13,9 +13,13 @@
 
     export default {
         name: 'ContentLayer',
-        data(){
+        data() {
             return {
-                c:{}
+                content: {
+                    user: {nickname: '', portrait: ''},
+                    contentTag: {list: []},
+                    media: {}
+                }
             }
         },
         components: {
@@ -23,11 +27,19 @@
             MediaLayer,
             TagLayer
         },
-        props:[
-            'content'
-        ],
-        mounted(){
-            console.log(this.content,'content');
+        created() {
+            // 获取内容详情
+            let param = Url.getCommonParam();
+            param.id = 585
+            this.$http.post(Url.urlList.URL_MEDIA_GET, param).then(response => {
+                // success
+                this.content = response.body.data
+                console.log(this.content.media)
+                // console.log(response)
+            }).catch(response => {
+                // error
+                console.log(response.status + ': ' + response.statusText)
+            })
         }
     }
 </script>

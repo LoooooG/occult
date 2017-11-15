@@ -1,8 +1,8 @@
 <template>
     <div class="container">
         <download-bar></download-bar>
-        <content-layer v-bind:content="content"></content-layer>
-        <recommend-block :recommend="recommend"></recommend-block>
+        <content-layer></content-layer>
+        <recommend-block></recommend-block>
     </div>
 </template>
 
@@ -10,40 +10,9 @@
     import DownloadBar from '@/components/common/DownloadBar'
     import ContentLayer from '@/components/content/ContentLayer'
     import RecommendBlock from '@/components/common/RecommendBlock'
-    import Url from '@/global/Url';
 
     export default {
         name: 'Share',
-        data() {
-            return {
-                content: {
-                    user: {nickname: '', portrait: ''},
-                    contentTag: {list: []},
-                    media: {}
-                },
-                recommend: {
-                    list: []
-                }
-            }
-        },
-        mounted() {
-            // 获取内容详情
-            let param = Url.getCommonParam();
-            param.id = 585
-            this.$http.post(Url.urlList.URL_MEDIA_GET, param).then(response => {
-                // success
-                this.content = response.body.data
-            }).catch(response => {
-                // error
-                console.log(response.status + ': ' + response.statusText)
-            })
-            console.log(this.content,'s');
-
-            // 获取大家都在看内容
-            this.$http.get('/api/recommend').then(response => {
-                this.recommend = response.body.data
-            });
-        },
         components: {
             DownloadBar,
             ContentLayer,
