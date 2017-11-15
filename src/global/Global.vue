@@ -3,7 +3,8 @@
         // browser version type
         versions: function () {
             let u = navigator.userAgent, app = navigator.appVersion;
-            return { // 移动终端浏览器版本信息
+            return { 
+                //移动终端浏览器版本信息
                 trident: u.indexOf('Trident') > -1, // IE内核
                 presto: u.indexOf('Presto') > -1, // opera内核
                 webKit: u.indexOf('AppleWebKit') > -1, // 苹果、谷歌内核
@@ -15,8 +16,7 @@
                 iPad: u.indexOf('iPad') > -1, // 是否iPad
                 webApp: u.indexOf('Safari') == -1, // 是否web应该程序，没有头部与底部
                 isMyApp: u.indexOf('PerfectDoctor') > -1, // 是否完美医生APP
-                weixin: u.toLowerCase().match(/MicroMessenger/i) == "micromessenger" // 是否微信浏览器
-
+                weixin: u.toLowerCase().match(/MicroMessenger/i) == "micromessenger"  //是否微信浏览器
             };
         }(),
         language: (navigator.browserLanguage || navigator.language).toLowerCase()

@@ -24,22 +24,12 @@
             }
         },
         props: {
-            media: {
-                type: Object,
-                required: true,
-                default() {
-                    return {
-                        audio: {},
-                        image: {},
-                        video: {},
-                        article: {},
-                        type: 0
-                    }
-                }
+            media:{
+                type : Object
             }
         },
         mounted() {
-            console.log(this.media);
+            console.log(this.media,'media');
         }
     }
 </script>

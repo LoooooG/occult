@@ -13,16 +13,21 @@
 
     export default {
         name: 'ContentLayer',
+        data(){
+            return {
+                c:{}
+            }
+        },
         components: {
             UserLayer,
             MediaLayer,
             TagLayer
         },
-        props: {
-            content: {
-                type: Object,
-                required: true
-            }
+        props:[
+            'content'
+        ],
+        mounted(){
+            console.log(this.content,'content');
         }
     }
 </script>

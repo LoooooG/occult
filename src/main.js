@@ -2,6 +2,7 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import './assets/css/common.scss'
+import App from './App'
 import router from './router/router'
 import VueResource from 'vue-resource'
 Vue.use(VueResource)
@@ -14,9 +15,8 @@ new Vue({
     el: '#app',
     router,
     watch: {
-        // 监视路由，参数为要目标路由和当前页面的路由
-        '$route' (to, from){
-            console.log('to: ' + to.path + ', from: ' + from.path)
-        }
-    }
+
+    },
+    template:'<App/>',
+    components:{App}
 })
