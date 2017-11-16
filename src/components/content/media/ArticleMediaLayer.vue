@@ -1,5 +1,5 @@
 <template>
-
+    <text-unit-layer :article="media.article"></text-unit-layer>
 </template>
 
 <script>

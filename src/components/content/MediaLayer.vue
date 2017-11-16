@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div class="media-container">
         <div v-if="getType == 0" class="base-margin-left-right">UNKNOWN</div>
         <video-media-layer
                 :media="media"
@@ -50,7 +50,7 @@
 </script>
 
 <style lang="scss" scoped>
-    .container {
+    .media-container {
 
     }
 </style>

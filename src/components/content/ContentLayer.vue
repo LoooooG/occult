@@ -32,7 +32,7 @@
             // 获取内容详情
             let param = Url.getCommonParam();
             param.id = 585
-            this.$http.post(Url.urlList.URL_MEDIA_GET, param).then(response => {
+            this.$http.get('/api/content', param).then(response => {
                 // success
                 this.content = response.body.data
                 console.log(this.content.media)

@@ -129,6 +129,18 @@ a:active .blue {
   display: block
 }
 
+@mixin flex-box {
+  display: -webkit-box;
+  display: -moz-box;
+  display: flex;
+}
+
+@mixin flex-wrap {
+  flex-wrap: wrap;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+}
+
 @mixin single-text-ellipsis {
   overflow: hidden;
   text-overflow: ellipsis;

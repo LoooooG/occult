@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div class="share-container">
         <download-bar></download-bar>
         <content-layer></content-layer>
         <recommend-block></recommend-block>
@@ -26,7 +26,7 @@
         background: #fff;
     }
 
-    .container {
+    .share-container {
         max-width: 1280px;
         margin: 0 auto;
         overflow-x: hidden;

@@ -3,16 +3,10 @@
         <div class="header border-top border-bottom">
             <div class="title">大家都在看</div>
         </div>
-        <ul class="container" v-if="getRow.length > 0">
-            <li class="row" v-for="item in getRow">
-                <div class="item" v-if="item.first">
-                    <div class="cover" :style="{'background-image': 'url(' + item.first.cover + ')'}"></div>
-                    <span class="title">{{item.first.title}}</span>
-                </div>
-                <div class="item" v-if="item.second">
-                    <div class="cover" :style="{'background-image': 'url(' + item.second.cover + ')'}"></div>
-                    <span class="title">{{item.second.title}}</span>
-                </div>
+        <ul class="list-container" v-if="recommend.list.length > 0">
+            <li class="item" v-for="item in recommend.list">
+                <div class="cover" :style="{'background-image': 'url(' + item.cover + ')'}"></div>
+                <span class="title">{{item.title}}</span>
             </li>
         </ul>
     </div>
@@ -26,26 +20,6 @@
                 recommend: {
                     list: []
                 }
-            }
-        },
-        computed: {
-            getRow() {
-                let row = []
-                let obj = {}
-                let list = this.recommend.list
-                for (let i = 0; i < list.length; i++) {
-                    if (i % 2 === 0) {
-                        obj = {first: {}, second: {}};
-                        obj.first = list[i]
-                    } else {
-                        obj.second = list[i]
-                        row[(i - 1) / 2] = obj
-                    }
-                }
-                return row
-            },
-            getImgStyle(img) {
-                return { background: "url(" + img + ")"}
             }
         },
         created() {
@@ -80,37 +54,24 @@
         }
     }
 
-    .container {
-        margin-top: 15px;
-        .row {
-            text-align: center;
-            &:not(:first-child) {
-                margin-top: 10px;
+    .list-container {
+        margin: 15px 10px 0;
+        @include flex-box;
+        @include flex-wrap;
+        justify-content: space-between;
+        .item {
+            margin-top: 3px;
+            width: 49%;
+            .cover {
+                @include img-ratio-4-3;
             }
-            .item {
-                box-sizing: border-box;
-                text-align: center;
-                display: inline-block;
-                width: 49%;
-                .cover {
-                    @include img-ratio-4-3;
-                }
-                .title {
-                    @include single-text-ellipsis;
-                    display: block;
-                    font-size: 12px;
-                    color: $content-color;
-                    width: 100%;
-                    text-align: left;
-                }
-                &:first-child {
-                    padding-left: 10px;
-                    padding-right: 5px;
-                }
-                &:not(:first-child) {
-                    padding-left: 5px;
-                    padding-right: 10px;
-                }
+            .title {
+                @include single-text-ellipsis;
+                display: block;
+                font-size: 12px;
+                color: $content-color;
+                width: 100%;
+                text-align: left;
             }
         }
     }
