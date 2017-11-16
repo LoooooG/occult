@@ -31,7 +31,7 @@
         created() {
             // 获取内容详情
             let param = Url.getCommonParam();
-            param.id = 600
+            param.id = 609
             this.$http.post(Url.urlList.URL_MEDIA_GET, param).then(response => {
                 // success
                 this.content = response.body.data

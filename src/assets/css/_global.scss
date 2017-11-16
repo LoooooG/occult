@@ -175,6 +175,20 @@ a:active .blue {
   padding-bottom: 75%;
 }
 
+@mixin scale-half {
+  -webkit-transform-origin: 0 0;
+  transform-origin: 50% 50%;
+  -webkit-transform: scale(.5);
+  transform: scale(.5);
+}
+
+@mixin scale-ratio($ratio) {
+  -webkit-transform-origin: 0 0;
+  transform-origin: 50% 50%;
+  -webkit-transform: scale($ratio);
+  transform: scale($ratio);
+}
+
 .text-ellipsis {
   @include single-text-ellipsis;
 }
