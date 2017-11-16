@@ -1,5 +1,8 @@
 <template>
-
+    <div>
+        <text-unit-layer :article="media.article"></text-unit-layer>
+        <audio-unit-layer :audio="media.audio"></audio-unit-layer>
+    </div>
 </template>
 
 <script>

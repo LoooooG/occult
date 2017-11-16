@@ -1,12 +1,18 @@
 <template>
-
+    <div class="audio-container"></div>
 </template>
 
 <script>
     export default {
         name: 'AudioUnitLayer',
-        data() {
-            return {msg: 'AudioUnitLayer'}
+        props: {
+            audio: {
+                type: Object,
+                required: true
+            }
+        },
+        mounted() {
+            console.log(this.audio);
         }
     }
 </script>

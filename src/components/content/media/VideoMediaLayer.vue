@@ -1,5 +1,8 @@
 <template>
-
+    <div>
+        <text-unit-layer :article="media.article"></text-unit-layer>
+        <video-unit-layer :video="media.video"></video-unit-layer>
+    </div>
 </template>
 
 <script>
