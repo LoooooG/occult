@@ -1,6 +1,6 @@
 <template>
     <div class="video-container">
-        <video-player  class="video-player-box"
+        <video-player  class="vjs-custom-skin"
                        ref="VideoPlayer"
                        :options="playerOptions"
                        :playsinline="true"
@@ -18,14 +18,16 @@
             return {
                 playerOptions: {
                     // videojs options
-                    muted: true,
+                    muted: false,
                     language: 'en',
                     playbackRates: [0.7, 1.0, 1.5, 2.0],
                     sources: [{
                         type: "video/mp4",
-                        src: "https://cdn.theguardian.tv/webM/2015/07/20/150716YesMen_synd_768k_vp8.webm"
+                        src: ""
                     }],
-                    poster: "/static/images/author.jpg",
+                    poster: "",
+                    width: '100%',
+                    height: '360'
                 }
             }
         },
@@ -88,5 +90,7 @@
 </script>
 
 <style lang="scss" scoped>
-
+    .video-container {
+        margin-top: 10px;
+    }
 </style>

@@ -1,6 +1,6 @@
 <template>
     <div>
-        <text-unit-layer :article="media.article"></text-unit-layer>
+        <text-unit-layer v-if="media.article" :article="media.article"></text-unit-layer>
         <image-unit-layer :image="media.image"></image-unit-layer>
     </div>
 </template>

@@ -4,7 +4,7 @@
             <li class="solo" v-if="image.list.length === 1">
                 <img :src="image.list[0].low" alt="">
             </li>
-            <li class="item" v-for="(item, index) in image.list" :class="{'even': isEven}">
+            <li class="item" v-else v-for="(item, index) in image.list" :class="{'even': isEven}">
                 <div v-if="index < 9" class="cover" :style="{'background-image': 'url(' + item.low + ')'}"></div>
             </li>
         </ul>
