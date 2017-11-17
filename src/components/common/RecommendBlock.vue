@@ -4,7 +4,7 @@
             <div class="title">大家都在看</div>
         </div>
         <ul class="list-container" v-if="recommend.list.length > 0">
-            <li class="item" v-for="item in recommend.list">
+            <li class="item" v-for="item in recommend.list" @click="go">
                 <div class="cover" :style="{'background-image': 'url(' + item.cover + ')'}"></div>
                 <span class="title">{{item.title}}</span>
             </li>
@@ -13,6 +13,8 @@
 </template>
 
 <script>
+    import DownloadOrOpen from '@/components/common/DownloadOrOpen'
+
     export default {
         name: 'RecommendBlock',
         data() {
@@ -22,6 +24,7 @@
                 }
             }
         },
+        mixins: [DownloadOrOpen],
         created() {
             // 获取大家都在看内容
             this.$http.get('/api/recommend').then(response => {
@@ -55,12 +58,12 @@
     }
 
     .list-container {
-        margin: 15px 10px 0;
+        margin: 0px 10px 0;
         @include flex-box;
         @include flex-wrap;
         justify-content: space-between;
         .item {
-            margin-top: 3px;
+            margin-top: 15px;
             width: 49%;
             .cover {
                 @include img-ratio-4-3;

@@ -27,14 +27,21 @@
                     }],
                     poster: "",
                     width: '100%',
-                    height: '360'
+                    height: '250'
                 }
             }
         },
         mounted() {
+            let height = this.video.height
+            let width = this.video.width
             console.log(this.video)
             this.playerOptions.sources[0].src = this.video.url
+            // this.playerOptions.sources[0].src = 'http://precc.hetunlive.com/iup/mediacheck/4c0c6a3b9910477f9a7a1e48a4a09c53.mp4'
             this.playerOptions.poster = this.video.cover
+
+            if (height && width && width > height) {
+                this.playerOptions.height = document.body.offsetWidth * height / width
+            }
             console.log('this is current player instance object')
         },
         computed: {

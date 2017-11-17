@@ -24,56 +24,20 @@
       ]
     },
     "media": {
-      "type": "3",
-      "image": {
-        "list": [
-          {
-            "thumbnail": "https://wx3.sinaimg.cn/mw690/92e8647aly1fen8vihqtrg20b406fu0x.gif",
-            "high": "http://img.check.hetunlive.com/videoclips/operateUser/d180eb450497426da32e5ec3bd93de96.png",
-            "low": "http://img.check.hetunlive.com/videoclips/operateUser/d180eb450497426da32e5ec3bd93de96.png",
-            "type": 1,
-            "width": 640,
-            "height": 1920
-          },
-          {
-            "thumbnail": "https://wx3.sinaimg.cn/mw690/92e8647aly1fen8vihqtrg20b406fu0x.gif",
-            "high": "http://img.check.hetunlive.com/videoclips/operateUser/d180eb450497426da32e5ec3bd93de96.png",
-            "low": "http://img.check.hetunlive.com/videoclips/operateUser/d180eb450497426da32e5ec3bd93de96.png",
-            "type": 1,
-            "width": 640,
-            "height": 1920
-          },
-          {
-            "thumbnail": "https://wx3.sinaimg.cn/mw690/92e8647aly1fen8vihqtrg20b406fu0x.gif",
-            "high": "http://img.check.hetunlive.com/videoclips/operateUser/d180eb450497426da32e5ec3bd93de96.png",
-            "low": "http://img.check.hetunlive.com/videoclips/operateUser/d180eb450497426da32e5ec3bd93de96.png",
-            "type": 1,
-            "width": 640,
-            "height": 1920
-          },
-          {
-            "thumbnail": "https://wx3.sinaimg.cn/mw690/92e8647aly1fen8vihqtrg20b406fu0x.gif",
-            "high": "http://img.check.hetunlive.com/videoclips/operateUser/d180eb450497426da32e5ec3bd93de96.png",
-            "low": "http://img.check.hetunlive.com/videoclips/operateUser/d180eb450497426da32e5ec3bd93de96.png",
-            "type": 1,
-            "width": 640,
-            "height": 1920
-          }
-        ]
+      "type": "1",
+      "video": {
+        "cover": "http://img.check.hetunlive.com/videoclips/operateUser/d180eb450497426da32e5ec3bd93de96.png",
+        "url": "http://tanzi27niu.cdsb.mobi/wps/wp-content/uploads/2017/05/2017-05-17_17-33-30.mp4"
       },
       "article": {
         "list": [
           {
             "index": 0,
-            "text": "文字AAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+            "text": "智障铲屎官：让我们一起舞蹈！"
           },
           {
             "index": 1,
-            "text": "文字BBBBBBBBBBBBB"
-          },
-          {
-            "index": 2,
-            "text": "文字CCCCCCCCCCCCC"
+            "text": "猫：？？？？！"
           }
         ]
       }

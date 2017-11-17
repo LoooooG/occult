@@ -1,13 +1,14 @@
 <template>
     <div class="user_layer base-margin-left-right clearfix">
-        <img class="portrait" :src="getPortrait" alt="">
-        <span class="nickname">{{getNickname}}</span>
-        <span class="follow">+关注</span>
+        <img class="portrait" :src="getPortrait" alt="" @click="go">
+        <span class="nickname" @click="go">{{getNickname}}</span>
+        <span class="follow" @click="go">+关注</span>
     </div>
 </template>
 
 <script>
-    import DefPortrait from '../../assets/img/def_head.png';
+    import DefPortrait from '../../assets/img/def_head.png'
+    import DownloadOrOpen from '@/components/common/DownloadOrOpen'
 
     export default {
 
@@ -20,6 +21,7 @@
                 return this.user.portrait || DefPortrait
             }
         },
+        mixins: [DownloadOrOpen],
         props: {
             user: {
                 type: Object,

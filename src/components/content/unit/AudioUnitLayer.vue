@@ -1,21 +1,32 @@
 <template>
     <div class="audio-container base-margin-left-right">
-        <audio id="audio" :src="audio.url" @canplay="canPlay" @timeupdate="timeupdate">该设备不支持音频</audio>
+        <audio id="audio" :src="audio.url"
+               @play="play"
+               @pause="pause"
+               @canplay="canPlay"
+               @timeupdate="timeupdate">该设备不支持音频</audio>
         <div class="player-box">
-            <div class="btn" @click="openPlayer"><img src="../../../assets/img/audio_play.png" alt=""></div>
+            <div class="btn" @click="togglePlayer"><img :src="btn" alt=""></div>
             <div class="time-mark current">{{current}}</div>
-            <progress value="20" max="100"></progress>
+            <progress id="progress" value="0" max="100"></progress>
             <div class="time-mark max">{{duration}}</div>
         </div>
     </div>
 </template>
 
 <script>
-    let player;
+    import PlayBtn from '../../../assets/img/audio_play.png'
+    import PauseBtn from '../../../assets/img/audio_pause.png'
+    let player, progress;
+
     export default {
         name: 'AudioUnitLayer',
         data() {
-            return {duration: '00:00', current: '00:00'}
+            return {
+                duration: '00:00',
+                current: '00:00',
+                btn: PlayBtn
+            }
         },
         props: {
             audio: {
@@ -25,17 +36,30 @@
         },
         mounted() {
             player = document.querySelector('audio')
+            progress = document.querySelector('progress')
             console.log(this.audio)
         },
         methods: {
-            openPlayer: function(){
-                player.play();
+            togglePlayer: function () {
+                if (this.btn === PlayBtn) {
+                    player.play()
+                } else if (this.btn === PauseBtn) {
+                    player.pause()
+                }
             },
             canPlay() {
+                progress.max = parseInt(player.duration)
                 this.duration = parseInt(player.duration).formatTime()
                 this.current = '00:00'
             },
+            play() {
+                this.btn = PauseBtn
+            },
+            pause() {
+                this.btn = PlayBtn
+            },
             timeupdate() {
+                progress.value = parseInt(player.currentTime)
                 this.current = parseInt(player.currentTime).formatTime()
             }
         }
@@ -70,12 +94,24 @@
                 }
             }
             progress {
-                &::-webkit-progress-inner-element { border-radius: $progress-height / 2; }
-                &::-webkit-progress-value { border-radius: $progress-height / 2; }
-                &::-webkit-progress-bar { border-radius: $progress-height / 2; }
-                &::-moz-progress-bar { background: $primary; }
-                &::-webkit-progress-bar { background: #979797; }
-                &::-webkit-progress-value  { background: $primary; }
+                &::-webkit-progress-inner-element {
+                    border-radius: $progress-height / 2;
+                }
+                &::-webkit-progress-value {
+                    border-radius: $progress-height / 2;
+                }
+                &::-webkit-progress-bar {
+                    border-radius: $progress-height / 2;
+                }
+                &::-moz-progress-bar {
+                    background: $primary;
+                }
+                &::-webkit-progress-bar {
+                    background: #979797;
+                }
+                &::-webkit-progress-value {
+                    background: $primary;
+                }
                 flex: 1;
                 background-color: $primary;
                 border: 0 solid;

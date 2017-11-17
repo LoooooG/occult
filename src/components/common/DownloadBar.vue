@@ -5,18 +5,13 @@
 </template>
 
 <script>
-    import DownloadOrOpen from '@/components/common/DownloadOrOpen';
+    import DownloadOrOpen from '@/components/common/DownloadOrOpen'
     export default {
         name: 'DownloadBar',
         data() {
             return {msg: 'DownloadBar'}
         },
-        mixins: [DownloadOrOpen],
-        methods: {
-            goDownload() {
-                console.log(123);
-            }
-        }
+        mixins: [DownloadOrOpen]
     }
 </script>
 

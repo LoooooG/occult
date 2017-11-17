@@ -37,6 +37,8 @@
 </style>
 
 <script>
+    import Url from '@/global/Url'
+
     export default {
         name: 'app',
         data(){
@@ -64,6 +66,16 @@
 //                }
 //                return this.transitionName = '';
 //            }
+        },
+        created() {
+            this.$http.post(Url.urlList.URL_WX_CONFIG, {url: window.location.href}).then(response => {
+                let config = response.body.data
+                config.debug = true
+                config.jsApiList = ['onMenuShareTimeline', 'onMenuShareAppMessage', 'chooseImage', 'previewImage', 'uploadImage', 'downloadImage', 'getLocation']
+                console.log(config)
+            }).catch(response => {
+
+            })
         }
     }
 </script>
