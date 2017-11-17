@@ -3,9 +3,9 @@
         <audio id="audio" :src="audio.url" @canplay="canPlay" @timeupdate="timeupdate">该设备不支持音频</audio>
         <div class="player-box">
             <div class="btn" @click="openPlayer"><img src="../../../assets/img/audio_play.png" alt=""></div>
-            <div class="time-mark current">{{audio.current}}</div>
+            <div class="time-mark current">{{current}}</div>
             <progress value="20" max="100"></progress>
-            <div class="time-mark max">{{audio.duration}}</div>
+            <div class="time-mark max">{{duration}}</div>
         </div>
     </div>
 </template>
@@ -14,6 +14,9 @@
     let player;
     export default {
         name: 'AudioUnitLayer',
+        data() {
+            return {duration: '00:00', current: '00:00'}
+        },
         props: {
             audio: {
                 type: Object,
@@ -29,13 +32,11 @@
                 player.play();
             },
             canPlay() {
-                this.audio.duration = player.duration
-                this.audio.current = 0
-                console.log(this.audio)
+                this.duration = parseInt(player.duration).formatTime()
+                this.current = '00:00'
             },
             timeupdate() {
-                this.audio.current = player.currentTime
-                console.log(this.audio);
+                this.current = parseInt(player.currentTime).formatTime()
             }
         }
     }

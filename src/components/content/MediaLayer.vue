@@ -1,6 +1,6 @@
 <template>
     <div class="media-container">
-        <div v-if="getType == 0" class="base-margin-left-right">UNKNOWN</div>
+        <div v-if="getType == 0" class="base-margin-left-right">加载中...</div>
         <video-media-layer
                 :media="media"
                 v-else-if="getType == 1">VIDEO</video-media-layer>
