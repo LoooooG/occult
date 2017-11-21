@@ -11,7 +11,7 @@
         name: 'VideoUnitLayer',
         data() {
             return {
-                playerOptions: {
+                options: {
                     mp4: "", //请替换成实际可用的播放地址
                     autoplay: false,  //iOS下safari浏览器，以及大部分移动端浏览器是不开放视频自动播放这个能力的
                     coverpic: {style: "cover", src: ""},
@@ -25,13 +25,13 @@
         },
         mounted() {
             console.log(this.video)
-            this.playerOptions.width = this.video.width || 480
-            this.playerOptions.height = this.video.height || 270
-            this.playerOptions.mp4 = this.video.url
-            // this.playerOptions.mp4 = 'http://precc.hetunlive.com/iup/mediacheck/4c0c6a3b9910477f9a7a1e48a4a09c53.mp4'
-            this.playerOptions.coverpic.src = this.video.cover
+            this.options.width = this.video.width || 480
+            this.options.height = this.video.height || 270
+            this.options.mp4 = this.video.url
+            // this.options.mp4 = 'http://precc.hetunlive.com/iup/mediacheck/4c0c6a3b9910477f9a7a1e48a4a09c53.mp4'
+            this.options.coverpic.src = this.video.cover
 
-            let player = new TcPlayer('video-player', this.playerOptions)
+            let player = new TcPlayer('video-player', this.options)
         },
         props: {
             video: {

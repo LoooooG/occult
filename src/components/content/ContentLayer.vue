@@ -8,10 +8,12 @@
 
 <script>
     import Url from '@/global/Url'
+    import Global from '@/global/Global'
+    import Wechat from '@/global/Wechat'
+
     import UserLayer from './UserLayer'
     import MediaLayer from './MediaLayer'
     import TagLayer from './TagLayer'
-    import Global from '../../global/Global'
 
     export default {
         name: 'ContentLayer',
@@ -34,17 +36,47 @@
             Global.loading.show()
             let param = Url.getCommonParam();
             param.id = Global.getQueryString('id') || 608
-            this.$http.post(Url.urlList.URL_MEDIA_GET, param).then(response => {
-                // success
-                Global.loading.hide()
-                this.content = response.body.data
-                console.log(this.content, 'ContentLayer')
-                // console.log(response)
-            }).catch(response => {
-                // error
-                Global.loading.hide()
-                Global.messenger(response.status + ': ' + response.statusText, false)
-            })
+            this.getContent(param)
+            param.client = 'WEB'
+            param.type = 'MEDIA'
+            param.shareType = 2
+            this.getShareData(param)
+        },
+        methods: {
+            getContent(param) {
+                this.$http.post(Url.urlList.URL_MEDIA_GET, param).then(response => {
+                    // success
+                    Global.loading.hide()
+                    this.content = response.body.data
+                    console.log(this.content, 'ContentLayer')
+                    // console.log(response)
+                }).catch(response => {
+                    // error
+                    Global.loading.hide()
+                    Global.messenger(response.status + ': ' + response.statusText, false)
+                })
+            },
+            getShareData(param) {
+                this.$http.post(Url.urlList.URL_MEDIA_SHARE, param).then(response => {
+                    // success
+                    console.log(response, 'ContentLayer Share')
+                    let data = response.body.data
+                    let mediaType
+                    switch (data.mediaType) {
+                        case "1":
+                            mediaType = 'video'
+                            break
+                        case "2":
+                            mediaType = 'music'
+                            break
+                    }
+                    Wechat.getInstance().setShareData(data.title,
+                        data.shareUrl, data.portrait, data.content, mediaType, data.dataUrl)
+                }).catch(response => {
+                    // error
+                    console.log(response, 'ContentLayer Share')
+                })
+            }
         }
     }
 </script>

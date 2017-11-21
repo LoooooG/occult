@@ -52,12 +52,20 @@ export default class Wechat {
      * @param link 分享链接
      * @param imgUrl 分享logo
      * @param desc 分享描述
+     * @param type 分享类型,music、video或link，不填默认为link
+     * @param dataUrl 如果type是music或video，则要提供数据链接，默认为空
      */
-    setShareData(title, link, imgUrl, desc) {
+    setShareData(title, link, imgUrl, desc, type, dataUrl) {
         this.share.title = title
         this.share.link = link
         this.share.imgUrl = imgUrl
         this.share.desc = desc
+        if (Global.isDefined(type)) {
+            this.share.type = type
+        }
+        if (Global.isDefined(dataUrl)) {
+            this.share.dataUrl = dataUrl
+        }
         this.initOnMenuShare()
     }
 
@@ -102,8 +110,8 @@ export default class Wechat {
             desc: this.share.desc, // 分享描述
             link: this.share.link, // 分享链接
             imgUrl: this.share.imgUrl, // 分享图标
-            type: '', // 分享类型,music、video或link，不填默认为link
-            dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+            type: this.share.type, // 分享类型,music、video或link，不填默认为link
+            dataUrl: this.share.dataUrl, // 如果type是music或video，则要提供数据链接，默认为空
             success() {
                 Global.messenger('发送成功', true)
             },
