@@ -2,16 +2,23 @@
     <div class="base-margin-left-right">
         <ul class="image-container">
             <li class="solo" v-if="image.list.length === 1">
-                <img :src="image.list[0].low" alt="">
+                <img :src="image.list[0].low" alt="" @click="preview(image.list[0].low)">
             </li>
             <li class="item" v-else v-for="(item, index) in image.list" :class="{'even': isEven}">
-                <div v-if="index < 9" class="cover" :style="{'background-image': 'url(' + item.low + ')'}"></div>
+                <div v-if="index < 9" class="cover"
+                     @click="preview(item.low)"
+                     :style="{'background-image': 'url(' + item.low + ')'}"></div>
+            </li>
+            <li class="item" v-if="image.list.length == 5 || image.list.length == 8">
+                <div class="cover"></div>
             </li>
         </ul>
     </div>
 </template>
 
 <script>
+    import wx from 'weixin-js-sdk'
+
     export default {
         name: 'ImageUnitLayer',
         props: {
@@ -29,6 +36,14 @@
             this.image.viewList = []
             for (let index in this.image.list) {
                 this.image.viewList.push(this.image.list[index].low)
+            }
+        },
+        methods: {
+            preview(url) {
+                wx.previewImage({
+                    current: url, // 当前显示图片的http链接
+                    urls: this.image.viewList // 需要预览的图片http链接列表
+                })
             }
         }
     }

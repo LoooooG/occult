@@ -11,6 +11,7 @@
     import UserLayer from './UserLayer'
     import MediaLayer from './MediaLayer'
     import TagLayer from './TagLayer'
+    import Global from '../../global/Global'
 
     export default {
         name: 'ContentLayer',
@@ -31,11 +32,11 @@
         created() {
             // 获取内容详情
             let param = Url.getCommonParam();
-            param.id = 608
+            param.id = Global.getQueryString('id') || 608
             this.$http.post(Url.urlList.URL_MEDIA_GET, param).then(response => {
                 // success
                 this.content = response.body.data
-                console.log(this.content.media)
+                console.log(this.content, 'ContentLayer')
                 // console.log(response)
             }).catch(response => {
                 // error

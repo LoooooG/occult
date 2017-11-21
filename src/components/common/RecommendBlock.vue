@@ -29,6 +29,8 @@
             // 获取大家都在看内容
             this.$http.get('/api/recommend').then(response => {
                 this.recommend = response.body.data
+            }).catch(response => {
+                console.log(response);
             })
         }
     }

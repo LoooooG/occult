@@ -1,5 +1,5 @@
 <template>
-    <ul class="tag-container base-margin-left-right" v-if="contentTag.list.length > 0">
+    <ul class="tag-container base-margin-left-right" v-if="contentTag.list && contentTag.list.length > 0">
         <li class="tag-item" v-for="tag in contentTag.list">{{tag.name}}</li>
     </ul>
 </template>

@@ -1,332 +1,349 @@
 const browser = {
 // browser version type
-versions: function () {
-let u = navigator.userAgent, app = navigator.appVersion;
-return {
+    versions: function () {
+        let u = navigator.userAgent, app = navigator.appVersion;
+        return {
 //移动终端浏览器版本信息
-trident: u.indexOf('Trident') > -1, // IE内核
-presto: u.indexOf('Presto') > -1, // opera内核
-webKit: u.indexOf('AppleWebKit') > -1, // 苹果、谷歌内核
-gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, // 火狐内核
-mobile: !!u.match(/AppleWebKit.*Mobile.*/), // 是否为移动终端
-ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), // ios终端
-android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, // android终端或uc浏览器
-iPhone: u.indexOf('iPhone') > -1, // 是否为iPhone或者QQHD浏览器
-iPad: u.indexOf('iPad') > -1, // 是否iPad
-webApp: u.indexOf('Safari') == -1, // 是否web应该程序，没有头部与底部
-isMyApp: u.indexOf('PerfectDoctor') > -1, // 是否完美医生APP
-weixin: u.toLowerCase().match(/MicroMessenger/i) == "micromessenger"  //是否微信浏览器
-};
-}(),
-language: (navigator.browserLanguage || navigator.language).toLowerCase()
+            trident: u.indexOf('Trident') > -1, // IE内核
+            presto: u.indexOf('Presto') > -1, // opera内核
+            webKit: u.indexOf('AppleWebKit') > -1, // 苹果、谷歌内核
+            gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, // 火狐内核
+            mobile: !!u.match(/AppleWebKit.*Mobile.*/), // 是否为移动终端
+            ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), // ios终端
+            android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, // android终端或uc浏览器
+            iPhone: u.indexOf('iPhone') > -1, // 是否为iPhone或者QQHD浏览器
+            iPad: u.indexOf('iPad') > -1, // 是否iPad
+            webApp: u.indexOf('Safari') == -1, // 是否web应该程序，没有头部与底部
+            isMyApp: u.indexOf('PerfectDoctor') > -1, // 是否完美医生APP
+            weixin: u.toLowerCase().match(/MicroMessenger/i) == "micromessenger"  //是否微信浏览器
+        };
+    }(),
+    language: (navigator.browserLanguage || navigator.language).toLowerCase()
 }
 
 /**
-* 扩展对象(重写原属性或方法)
-* means that properties in dest will be overwritten by the ones in src.
-* @param {Object} dest
-* @param {Object} src
-* @param {Boolean} [merge]
-* @returns {Object} dest
-*/
+ * 扩展对象(重写原属性或方法)
+ * means that properties in dest will be overwritten by the ones in src.
+ * @param {Object} dest
+ * @param {Object} src
+ * @param {Boolean} [merge]
+ * @returns {Object} dest
+ */
 function extend(dest, src, merge) {
-let keys = Object.keys(src),
-i = 0;
-while (i < keys.length) {
-if (!merge || (merge && dest[keys[i]] === undefined)) {
-dest[keys[i]] = src[keys[i]];
-}
-i++;
-}
-return dest;
+    let keys = Object.keys(src),
+        i = 0;
+    while (i < keys.length) {
+        if (!merge || (merge && dest[keys[i]] === undefined)) {
+            dest[keys[i]] = src[keys[i]];
+        }
+        i++;
+    }
+    return dest;
 }
 
 /**
-* 合并对象(不重写原属性或方法)
-* means that properties that exist in dest will "not" be overwritten by src
-* @param {Object} dest
-* @param {Object} src
-* @returns {Object} dest
-*/
+ * 合并对象(不重写原属性或方法)
+ * means that properties that exist in dest will "not" be overwritten by src
+ * @param {Object} dest
+ * @param {Object} src
+ * @returns {Object} dest
+ */
 function merge(dest, src) {
-return extend(dest, src, true);
+    return extend(dest, src, true);
 }
 
 /**
-* 类继承
-* simple class inheritance
-* @param {Function} child
-* @param {Function} base
-* @param {Object} [properties]
-*/
+ * 类继承
+ * simple class inheritance
+ * @param {Function} child
+ * @param {Function} base
+ * @param {Object} [properties]
+ */
 function inherit(child, base, properties) {
-let baseP = base.prototype,
-childP;
+    let baseP = base.prototype,
+        childP;
 
-childP = child.prototype = Object.create(baseP);
-childP.constructor = child;
-childP._super = baseP;
+    childP = child.prototype = Object.create(baseP);
+    childP.constructor = child;
+    childP._super = baseP;
 
-if (properties) {
-extend(childP, properties);
-}
+    if (properties) {
+        extend(childP, properties);
+    }
 }
 
 
 /**
-* 获取url中的参数
-* get params from url.
-* @returns {object} params
-*/
+ * 获取url中的参数
+ * get params from url.
+ * @returns {object} params
+ */
 function getRequest() {
-let url = location.search,
-theRequest = {};
-if (url.indexOf("?") !== -1) {
-let str = url.substr(1),
-strs = str.split("&");
-for (let i = 0; i < strs.length; i++) {
-theRequest[strs[i].split("=")[0]] = decodeURI(strs[i].split("=")[1]);
-}
-}
-return theRequest;
+    let url = location.href,
+        theRequest = {};
+    if (url.indexOf("?") !== -1) {
+        let str = url.substr(url.indexOf("?") + 1),
+            strs = str.split("&");
+        for (let i = 0; i < strs.length; i++) {
+            theRequest[strs[i].split("=")[0]] = decodeURI(strs[i].split("=")[1]);
+        }
+    }
+    return theRequest;
 }
 
 /**
-* 带参数的url跳转
-* go to url with param.
-* @param {object} param
-*/
+ * 获取url中的参数
+ * @param name
+ * @returns {*}
+ */
+function getQueryString(name) {
+    let url = location.href,
+        reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)', 'i');
+    let r = url.substr(url.indexOf("?") + 1).match(reg);
+    if (r != null) {
+        return decodeURI(r[2]);
+    }
+    return null;
+}
+
+/**
+ * 带参数的url跳转
+ * go to url with param.
+ * @param {object} param
+ */
 function param2Location(param) {
-let p = json2param(param.p);
-window.location.href = param.f + URL_EXT + "?" + p;
+    let p = json2param(param.p);
+    window.location.href = param.f + URL_EXT + "?" + p;
 }
 
 /**
-* 将json类型的参数转换成url
-* json data turn to url param string.
-* @param {json} jsondata
-* @returns {string}
-*/
+ * 将json类型的参数转换成url
+ * json data turn to url param string.
+ * @param {json} jsondata
+ * @returns {string}
+ */
 function json2param(jsondata) {
-let p = '';
-for (let x in jsondata) {
-if (p === '') {
-p = (typeof jsondata [x] !== 'object') ? p + x + "=" + jsondata[x] : p + x + "=" + JSON.stringify(jsondata[x]);
-} else {
-p = (typeof jsondata [x] !== 'object') ? p + "&" + x + "=" + jsondata[x] : p + "&" + x + "=" + JSON.stringify(jsondata[x]);
-}
-}
-return p;
+    let p = '';
+    for (let x in jsondata) {
+        if (p === '') {
+            p = (typeof jsondata [x] !== 'object') ? p + x + "=" + jsondata[x] : p + x + "=" + JSON.stringify(jsondata[x]);
+        } else {
+            p = (typeof jsondata [x] !== 'object') ? p + "&" + x + "=" + jsondata[x] : p + "&" + x + "=" + JSON.stringify(jsondata[x]);
+        }
+    }
+    return p;
 }
 
 /**
-* 获取json长度
-* get json object's length.
-* @param {object} jsonObj
-* @returns {number} length
-*/
+ * 获取json长度
+ * get json object's length.
+ * @param {object} jsonObj
+ * @returns {number} length
+ */
 function getJsonLength(jsonObj) {
-let length = 0;
-for (let item in jsonObj) {
-length += 1;
-}
-return length;
+    let length = 0;
+    for (let item in jsonObj) {
+        length += 1;
+    }
+    return length;
 }
 
 /**
-* 对Date的扩展，将 Date 转化为指定格式的String
-* 月(M)、日(d)、12小时(h)、24小时(H)、分(m)、秒(s)、周(E)、季度(q) 可以用 1-2 个占位符
-* 年(y)可以用 1-4 个占位符，毫秒(S)只能用 1 个占位符(是 1-3 位的数字)
-* eg:
-* (new Date()).pattern("yyyy-MM-dd hh:mm:ss.S") ==> 2006-07-02 08:09:04.423
-* (new Date()).pattern("yyyy-MM-dd E HH:mm:ss") ==> 2009-03-10 二 20:09:04
-* (new Date()).pattern("yyyy-MM-dd EE hh:mm:ss") ==> 2009-03-10 周二 08:09:04
-* (new Date()).pattern("yyyy-MM-dd EEE hh:mm:ss") ==> 2009-03-10 星期二 08:09:04
-* (new Date()).pattern("yyyy-M-d h:m:s.S") ==> 2006-7-2 8:9:4.18
-* @param fmt
-* @param [timestamp]
-*/
+ * 对Date的扩展，将 Date 转化为指定格式的String
+ * 月(M)、日(d)、12小时(h)、24小时(H)、分(m)、秒(s)、周(E)、季度(q) 可以用 1-2 个占位符
+ * 年(y)可以用 1-4 个占位符，毫秒(S)只能用 1 个占位符(是 1-3 位的数字)
+ * eg:
+ * (new Date()).pattern("yyyy-MM-dd hh:mm:ss.S") ==> 2006-07-02 08:09:04.423
+ * (new Date()).pattern("yyyy-MM-dd E HH:mm:ss") ==> 2009-03-10 二 20:09:04
+ * (new Date()).pattern("yyyy-MM-dd EE hh:mm:ss") ==> 2009-03-10 周二 08:09:04
+ * (new Date()).pattern("yyyy-MM-dd EEE hh:mm:ss") ==> 2009-03-10 星期二 08:09:04
+ * (new Date()).pattern("yyyy-M-d h:m:s.S") ==> 2006-7-2 8:9:4.18
+ * @param fmt
+ * @param [timestamp]
+ */
 Date.prototype.pattern = function (fmt, timestamp) {
-if (isDefined(timestamp)) {
-timestamp.toString().length > 10 ? this.setTime(parseInt(timestamp)) : this.setTime(parseInt(timestamp) * 1000);
-}
-let o = {
-"M+": this.getMonth() + 1, //月份
-"d+": this.getDate(), //日
-"h+": this.getHours() % 12 == 0 ? 12 : this.getHours() % 12, //小时
-"H+": this.getHours(), //小时
-"m+": this.getMinutes(), //分
-"s+": this.getSeconds(), //秒
-"q+": Math.floor((this.getMonth() + 3) / 3), //季度
-"S": this.getMilliseconds() //毫秒
-};
-let week = {"0": "日", "1": "一", "2": "二", "3": "三", "4": "四", "5": "五", "6": "六"};
-if (/(y+)/.test(fmt)) {
-fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
-}
-if (/(E+)/.test(fmt)) {
-fmt = fmt.replace(RegExp.$1, ((RegExp.$1.length > 1) ? (RegExp.$1.length > 2 ? "星期" : "周") : "") + week[this.getDay() + ""]);
-}
-for (let k in o) {
-if (new RegExp("(" + k + ")").test(fmt)) {
-fmt = fmt.replace(RegExp.$1, (RegExp.$1.length === 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
-}
-}
-return fmt;
+    if (isDefined(timestamp)) {
+        timestamp.toString().length > 10 ? this.setTime(parseInt(timestamp)) : this.setTime(parseInt(timestamp) * 1000);
+    }
+    let o = {
+        "M+": this.getMonth() + 1, //月份
+        "d+": this.getDate(), //日
+        "h+": this.getHours() % 12 == 0 ? 12 : this.getHours() % 12, //小时
+        "H+": this.getHours(), //小时
+        "m+": this.getMinutes(), //分
+        "s+": this.getSeconds(), //秒
+        "q+": Math.floor((this.getMonth() + 3) / 3), //季度
+        "S": this.getMilliseconds() //毫秒
+    };
+    let week = {"0": "日", "1": "一", "2": "二", "3": "三", "4": "四", "5": "五", "6": "六"};
+    if (/(y+)/.test(fmt)) {
+        fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+    }
+    if (/(E+)/.test(fmt)) {
+        fmt = fmt.replace(RegExp.$1, ((RegExp.$1.length > 1) ? (RegExp.$1.length > 2 ? "星期" : "周") : "") + week[this.getDay() + ""]);
+    }
+    for (let k in o) {
+        if (new RegExp("(" + k + ")").test(fmt)) {
+            fmt = fmt.replace(RegExp.$1, (RegExp.$1.length === 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+        }
+    }
+    return fmt;
 };
 
 /**
-* 格式化日期 "1970-01-01"
-* format date time to 'Y-m-d'
-* @param {Date} dtime
-* @returns {string}
-*/
+ * 格式化日期 "1970-01-01"
+ * format date time to 'Y-m-d'
+ * @param {Date} dtime
+ * @returns {string}
+ */
 function formatDate(dtime) {
-let now = new Date(parseInt(dtime) * 1000);
-let year = now.getFullYear();
-let month = now.getMonth() + 1;
-let date = now.getDate();
-return year + "-" + month + "-" + date;
+    let now = new Date(parseInt(dtime) * 1000);
+    let year = now.getFullYear();
+    let month = now.getMonth() + 1;
+    let date = now.getDate();
+    return year + "-" + month + "-" + date;
 }
 
 /**
-* 格式化日期 "1970-01-01 00:00"
-* format date time to 'Y-m-d H:i'
-* @param {Date} [timestamp]
-* @param [type] default: m-d h:i, 1: m月d日, 2: m月d日 （周D）
-* @returns {string}
-*/
+ * 格式化日期 "1970-01-01 00:00"
+ * format date time to 'Y-m-d H:i'
+ * @param {Date} [timestamp]
+ * @param [type] default: m-d h:i, 1: m月d日, 2: m月d日 （周D）
+ * @returns {string}
+ */
 function formatDateTime(timestamp, type) {
-let show_day = ['日', '一', '二', '三', '四', '五', '六'],
-now = (isDefined(timestamp)) ? new Date(parseInt(timestamp) * 1000) : new Date(),
-year = now.getFullYear(),
-month = now.getMonth() + 1,
-date = now.getDate(),
-day = show_day[now.getDay()],
-hour = now.getHours(),
-minute = now.getMinutes(),
-second = now.getSeconds();
-switch (type) {
-case 1:
-return month + "月" + date + "日" + " " + hour + ":" + minute;
-break;
-case 2:
-return month + "月" + date + "日" + "（周" + day + "）";
-break;
-case 3:
-return month + "月" + date + "日" + "（周" + day + "）" + " " + hour + ":" + minute;
-break;
-default :
-return month + "-" + date + " " + hour + ":" + minute;
-break;
-}
+    let show_day = ['日', '一', '二', '三', '四', '五', '六'],
+        now = (isDefined(timestamp)) ? new Date(parseInt(timestamp) * 1000) : new Date(),
+        year = now.getFullYear(),
+        month = now.getMonth() + 1,
+        date = now.getDate(),
+        day = show_day[now.getDay()],
+        hour = now.getHours(),
+        minute = now.getMinutes(),
+        second = now.getSeconds();
+    switch (type) {
+        case 1:
+            return month + "月" + date + "日" + " " + hour + ":" + minute;
+            break;
+        case 2:
+            return month + "月" + date + "日" + "（周" + day + "）";
+            break;
+        case 3:
+            return month + "月" + date + "日" + "（周" + day + "）" + " " + hour + ":" + minute;
+            break;
+        default :
+            return month + "-" + date + " " + hour + ":" + minute;
+            break;
+    }
 }
 
 /**
-* is Browser from PC?
-* @returns {boolean}
-*/
+ * is Browser from PC?
+ * @returns {boolean}
+ */
 function isPC() {
-return !(browser.versions.android || browser.versions.ios || browser.versions.iPhone || browser.versions.iPad);
+    return !(browser.versions.android || browser.versions.ios || browser.versions.iPhone || browser.versions.iPad);
 
 }
 
 /**
-* is Browser from Android?
-* @returns {boolean}
-*/
+ * is Browser from Android?
+ * @returns {boolean}
+ */
 function isAndroid() {
-return !!browser.versions.android;
+    return !!browser.versions.android;
 
 }
 
 /**
-* is Browser from IOS?
-* @returns {boolean}
-*/
+ * is Browser from IOS?
+ * @returns {boolean}
+ */
 function isIOS() {
-return !!(browser.versions.ios || browser.versions.iPhone || browser.versions.iPad);
+    return !!(browser.versions.ios || browser.versions.iPhone || browser.versions.iPad);
 
 }
 
 /**
-* is Browser from WeiXin(micromessenger)?
-* @returns {boolean}
-*/
+ * is Browser from WeiXin(micromessenger)?
+ * @returns {boolean}
+ */
 function isWeiXin() {
-return !!browser.versions.weixin;
+    return !!browser.versions.weixin;
 }
 
 /**
-* is Operate valid?
-* @returns {boolean}
-*/
+ * is Operate valid?
+ * @returns {boolean}
+ */
 function isOperateValid() {
-if (isWeiXin() || true) {
-return true;
-}
+    if (isWeiXin() || true) {
+        return true;
+    }
 // messenger('当前运行环境下不能使用语音或图片功能', 'info', 1000);
-return false;
+    return false;
 }
 
 /**
-* 检测对象是否已定义
-* object is defined or not
-* @param {object|*} obj
-* @returns {boolean}
-*/
+ * 检测对象是否已定义
+ * object is defined or not
+ * @param {object|*} obj
+ * @returns {boolean}
+ */
 function isDefined(obj) {
 //return obj !== undefined;
-return obj != null; // 要同时判断 null 和 undefined
+    return obj != null; // 要同时判断 null 和 undefined
 }
 
 /**
-* 检测是否空对象
-* is empty object or not "{}"
-* @param {object} obj
-* @returns {boolean}
-*/
+ * 检测是否空对象
+ * is empty object or not "{}"
+ * @param {object} obj
+ * @returns {boolean}
+ */
 function isEmptyObj(obj) {
-for (let s in obj) {
-return false;
-}
-return true;
+    for (let s in obj) {
+        return false;
+    }
+    return true;
 }
 
 /**
-* 检测Email地址是否合法
-* Email address format validation.
-* @param {string} str
-* @returns {boolean}
-*/
+ * 检测Email地址是否合法
+ * Email address format validation.
+ * @param {string} str
+ * @returns {boolean}
+ */
 function isEmail(str) {
-let reg = /^([a-zA-Z0-9]+[_|/_|/.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|/_|/.]?)*[a-zA-Z0-9]+(.[a-zA-Z]{2,3})$/;
-return reg.test(str);
+    let reg = /^([a-zA-Z0-9]+[_|/_|/.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|/_|/.]?)*[a-zA-Z0-9]+(.[a-zA-Z]{2,3})$/;
+    return reg.test(str);
 }
 
 /**
-* 检测手机号码格式是否合法
-* Mobile phone format validation.
-* @param {string} str
-* @returns {boolean}
-*/
+ * 检测手机号码格式是否合法
+ * Mobile phone format validation.
+ * @param {string} str
+ * @returns {boolean}
+ */
 function isPhone(str) {
-let reg = /^0?1[3|4|5|7|8][0-9]\d{8}$/;
-return reg.test(str);
+    let reg = /^0?1[3|4|5|7|8][0-9]\d{8}$/;
+    return reg.test(str);
 }
 
 /**
-* 检测电话号码格式是否合法
-* Telephone format validation.
-* @param {string} str
-* @returns {boolean}
-*/
+ * 检测电话号码格式是否合法
+ * Telephone format validation.
+ * @param {string} str
+ * @returns {boolean}
+ */
 function isTelephone(str) {
-let reg = /^(\(\d{3,4}\)|\d{3,4}-|\s)?\d{7,14}$/; // 电话格式验证
-return reg.test(str);
+    let reg = /^(\(\d{3,4}\)|\d{3,4}-|\s)?\d{7,14}$/; // 电话格式验证
+    return reg.test(str);
 }
 
 
 export default {
-isDefined
+    isDefined,
+    getRequest,
+    getQueryString
 }
