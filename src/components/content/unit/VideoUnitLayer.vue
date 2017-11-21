@@ -5,7 +5,8 @@
 </template>
 
 <script>
-  let {TcPlayer} = require("@/assets/TcPlayer-2.2.0.js")
+  //  let {TcPlayer}  = require("@/assets/TcPlayer-2.2.0.js")
+  import {TcPlayer} from "@/assets/TcPlayer-2.2.0.js"
 
   export default {
     name: 'VideoUnitLayer',
