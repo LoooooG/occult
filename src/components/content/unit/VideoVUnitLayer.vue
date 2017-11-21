@@ -13,7 +13,7 @@
     import {videoPlayer} from 'vue-video-player'
 
     export default {
-        name: 'VideoUnitLayer',
+        name: 'VideoVUnitLayer',
         data() {
             return {
                 playerOptions: {
