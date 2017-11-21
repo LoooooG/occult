@@ -6,6 +6,7 @@
     <title>鬼知道 - 探索未知世界</title>
     <link rel="icon" href="./static/logo.ico" />
     <link rel="shortcut icon" href="./static/logo.ico" />
+    <link rel="stylesheet" href="./static/weui.min.css"/>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <meta name="renderer" content="webkit">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -18,5 +19,13 @@
 <div id="app">
     <router-view></router-view>
 </div>
+<div id="messenger" style="display: none;">
+    <div class="weui-mask_transparent"></div>
+    <div class="weui-toast">
+        <i class="weui-icon-success-no-circle weui-icon_toast"></i>
+        <p class="weui-toast__content">已完成</p>
+    </div>
+</div>
+
 </body>
 </html>

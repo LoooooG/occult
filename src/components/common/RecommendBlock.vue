@@ -14,6 +14,7 @@
 
 <script>
     import DownloadOrOpen from '@/components/common/DownloadOrOpen'
+    import Url from '@/global/Url'
 
     export default {
         name: 'RecommendBlock',
@@ -27,8 +28,8 @@
         mixins: [DownloadOrOpen],
         created() {
             // 获取大家都在看内容
-            this.$http.get('/api/recommend').then(response => {
-                this.recommend = response.body.data
+            this.$http.post(Url.urlList.URL_RECOMMEND, {}).then(response => {
+                this.recommend = response.body.data.recommend
             }).catch(response => {
                 console.log(response);
             })

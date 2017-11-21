@@ -82,7 +82,7 @@ function getRequest() {
     let url = location.href,
         theRequest = {};
     if (url.indexOf("?") !== -1) {
-        let str = url.substr(url.indexOf("?") + 1),
+        let str = url.substr(url.lastIndexOf("?") + 1),
             strs = str.split("&");
         for (let i = 0; i < strs.length; i++) {
             theRequest[strs[i].split("=")[0]] = decodeURI(strs[i].split("=")[1]);
@@ -99,7 +99,7 @@ function getRequest() {
 function getQueryString(name) {
     let url = location.href,
         reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)', 'i');
-    let r = url.substr(url.indexOf("?") + 1).match(reg);
+    let r = url.substr(url.lastIndexOf("?") + 1).match(reg);
     if (r != null) {
         return decodeURI(r[2]);
     }
@@ -341,9 +341,37 @@ function isTelephone(str) {
     return reg.test(str);
 }
 
+/**
+ * 提示信息框
+ * dialog box
+ * @param {string} msg 提示信息
+ * @param {boolean} [state] 提示状态：true 成功；false 失败
+ * @param {number} [time] 显示时间
+ */
+let messengerTimeOutID;
+function messenger(msg, state, time) {
+    let after = isDefined(time) ? time : 2000,
+        icon = $("#messenger i");
+    $("#messenger p").html(msg);
+    if (isDefined(state) && state === false) {
+        icon.removeClass('weui-icon-info-circle').addClass('weui-icon-cancel'); // fail
+    } else if (state === true) {
+        icon.removeClass('weui-icon-cancel weui-icon-info-circle'); // true
+    } else {
+        icon.removeClass('weui-icon-cancel').addClass('weui-icon-info-circle'); // info
+    }
+    $("#messenger").show();
+    clearTimeout(messengerTimeOutID);
+    messengerTimeOutID = setTimeout(function () {
+        $("#messenger").hide();
+    }, after);
+}
+
 
 export default {
+    isWeiXin,
     isDefined,
     getRequest,
-    getQueryString
+    getQueryString,
+    messenger
 }
