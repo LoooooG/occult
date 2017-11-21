@@ -31,16 +31,19 @@
         },
         created() {
             // 获取内容详情
+            Global.loading.show()
             let param = Url.getCommonParam();
             param.id = Global.getQueryString('id') || 608
             this.$http.post(Url.urlList.URL_MEDIA_GET, param).then(response => {
                 // success
+                Global.loading.hide()
                 this.content = response.body.data
                 console.log(this.content, 'ContentLayer')
                 // console.log(response)
             }).catch(response => {
                 // error
-                console.log(response.status + ': ' + response.statusText)
+                Global.loading.hide()
+                Global.messenger(response.status + ': ' + response.statusText, false)
             })
         }
     }

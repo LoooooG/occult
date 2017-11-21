@@ -71,8 +71,6 @@
         created() {
             this.$http.post(Url.urlList.URL_WX_CONFIG, {url: window.location.href}).then(response => {
                 let config = response.body.data
-                config.debug = true
-                config.jsApiList = ['onMenuShareTimeline', 'onMenuShareAppMessage', 'chooseImage', 'previewImage', 'uploadImage', 'downloadImage', 'getLocation']
                 Wechat.getInstance().config(config)
             }).catch(response => {
 

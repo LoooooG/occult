@@ -16,7 +16,7 @@ const browser = {
             webApp: u.indexOf('Safari') == -1, // 是否web应该程序，没有头部与底部
             isMyApp: u.indexOf('PerfectDoctor') > -1, // 是否完美医生APP
             weixin: u.toLowerCase().match(/MicroMessenger/i) == "micromessenger"  //是否微信浏览器
-        };
+        }
     }(),
     language: (navigator.browserLanguage || navigator.language).toLowerCase()
 }
@@ -31,14 +31,14 @@ const browser = {
  */
 function extend(dest, src, merge) {
     let keys = Object.keys(src),
-        i = 0;
+        i = 0
     while (i < keys.length) {
         if (!merge || (merge && dest[keys[i]] === undefined)) {
-            dest[keys[i]] = src[keys[i]];
+            dest[keys[i]] = src[keys[i]]
         }
-        i++;
+        i++
     }
-    return dest;
+    return dest
 }
 
 /**
@@ -49,7 +49,7 @@ function extend(dest, src, merge) {
  * @returns {Object} dest
  */
 function merge(dest, src) {
-    return extend(dest, src, true);
+    return extend(dest, src, true)
 }
 
 /**
@@ -61,14 +61,14 @@ function merge(dest, src) {
  */
 function inherit(child, base, properties) {
     let baseP = base.prototype,
-        childP;
+        childP
 
-    childP = child.prototype = Object.create(baseP);
-    childP.constructor = child;
-    childP._super = baseP;
+    childP = child.prototype = Object.create(baseP)
+    childP.constructor = child
+    childP._super = baseP
 
     if (properties) {
-        extend(childP, properties);
+        extend(childP, properties)
     }
 }
 
@@ -80,15 +80,15 @@ function inherit(child, base, properties) {
  */
 function getRequest() {
     let url = location.href,
-        theRequest = {};
+        theRequest = {}
     if (url.indexOf("?") !== -1) {
         let str = url.substr(url.lastIndexOf("?") + 1),
-            strs = str.split("&");
+            strs = str.split("&")
         for (let i = 0; i < strs.length; i++) {
-            theRequest[strs[i].split("=")[0]] = decodeURI(strs[i].split("=")[1]);
+            theRequest[strs[i].split("=")[0]] = decodeURI(strs[i].split("=")[1])
         }
     }
-    return theRequest;
+    return theRequest
 }
 
 /**
@@ -98,12 +98,12 @@ function getRequest() {
  */
 function getQueryString(name) {
     let url = location.href,
-        reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)', 'i');
-    let r = url.substr(url.lastIndexOf("?") + 1).match(reg);
+        reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)', 'i')
+    let r = url.substr(url.lastIndexOf("?") + 1).match(reg)
     if (r != null) {
-        return decodeURI(r[2]);
+        return decodeURI(r[2])
     }
-    return null;
+    return null
 }
 
 /**
@@ -112,8 +112,8 @@ function getQueryString(name) {
  * @param {object} param
  */
 function param2Location(param) {
-    let p = json2param(param.p);
-    window.location.href = param.f + URL_EXT + "?" + p;
+    let p = json2param(param.p)
+    window.location.href = param.f + URL_EXT + "?" + p
 }
 
 /**
@@ -123,15 +123,15 @@ function param2Location(param) {
  * @returns {string}
  */
 function json2param(jsondata) {
-    let p = '';
+    let p = ''
     for (let x in jsondata) {
         if (p === '') {
-            p = (typeof jsondata [x] !== 'object') ? p + x + "=" + jsondata[x] : p + x + "=" + JSON.stringify(jsondata[x]);
+            p = (typeof jsondata [x] !== 'object') ? p + x + "=" + jsondata[x] : p + x + "=" + JSON.stringify(jsondata[x])
         } else {
-            p = (typeof jsondata [x] !== 'object') ? p + "&" + x + "=" + jsondata[x] : p + "&" + x + "=" + JSON.stringify(jsondata[x]);
+            p = (typeof jsondata [x] !== 'object') ? p + "&" + x + "=" + jsondata[x] : p + "&" + x + "=" + JSON.stringify(jsondata[x])
         }
     }
-    return p;
+    return p
 }
 
 /**
@@ -141,54 +141,12 @@ function json2param(jsondata) {
  * @returns {number} length
  */
 function getJsonLength(jsonObj) {
-    let length = 0;
+    let length = 0
     for (let item in jsonObj) {
-        length += 1;
+        length += 1
     }
-    return length;
+    return length
 }
-
-/**
- * 对Date的扩展，将 Date 转化为指定格式的String
- * 月(M)、日(d)、12小时(h)、24小时(H)、分(m)、秒(s)、周(E)、季度(q) 可以用 1-2 个占位符
- * 年(y)可以用 1-4 个占位符，毫秒(S)只能用 1 个占位符(是 1-3 位的数字)
- * eg:
- * (new Date()).pattern("yyyy-MM-dd hh:mm:ss.S") ==> 2006-07-02 08:09:04.423
- * (new Date()).pattern("yyyy-MM-dd E HH:mm:ss") ==> 2009-03-10 二 20:09:04
- * (new Date()).pattern("yyyy-MM-dd EE hh:mm:ss") ==> 2009-03-10 周二 08:09:04
- * (new Date()).pattern("yyyy-MM-dd EEE hh:mm:ss") ==> 2009-03-10 星期二 08:09:04
- * (new Date()).pattern("yyyy-M-d h:m:s.S") ==> 2006-7-2 8:9:4.18
- * @param fmt
- * @param [timestamp]
- */
-Date.prototype.pattern = function (fmt, timestamp) {
-    if (isDefined(timestamp)) {
-        timestamp.toString().length > 10 ? this.setTime(parseInt(timestamp)) : this.setTime(parseInt(timestamp) * 1000);
-    }
-    let o = {
-        "M+": this.getMonth() + 1, //月份
-        "d+": this.getDate(), //日
-        "h+": this.getHours() % 12 == 0 ? 12 : this.getHours() % 12, //小时
-        "H+": this.getHours(), //小时
-        "m+": this.getMinutes(), //分
-        "s+": this.getSeconds(), //秒
-        "q+": Math.floor((this.getMonth() + 3) / 3), //季度
-        "S": this.getMilliseconds() //毫秒
-    };
-    let week = {"0": "日", "1": "一", "2": "二", "3": "三", "4": "四", "5": "五", "6": "六"};
-    if (/(y+)/.test(fmt)) {
-        fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
-    }
-    if (/(E+)/.test(fmt)) {
-        fmt = fmt.replace(RegExp.$1, ((RegExp.$1.length > 1) ? (RegExp.$1.length > 2 ? "星期" : "周") : "") + week[this.getDay() + ""]);
-    }
-    for (let k in o) {
-        if (new RegExp("(" + k + ")").test(fmt)) {
-            fmt = fmt.replace(RegExp.$1, (RegExp.$1.length === 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
-        }
-    }
-    return fmt;
-};
 
 /**
  * 格式化日期 "1970-01-01"
@@ -197,11 +155,11 @@ Date.prototype.pattern = function (fmt, timestamp) {
  * @returns {string}
  */
 function formatDate(dtime) {
-    let now = new Date(parseInt(dtime) * 1000);
-    let year = now.getFullYear();
-    let month = now.getMonth() + 1;
-    let date = now.getDate();
-    return year + "-" + month + "-" + date;
+    let now = new Date(parseInt(dtime) * 1000)
+    let year = now.getFullYear()
+    let month = now.getMonth() + 1
+    let date = now.getDate()
+    return year + "-" + month + "-" + date
 }
 
 /**
@@ -220,20 +178,20 @@ function formatDateTime(timestamp, type) {
         day = show_day[now.getDay()],
         hour = now.getHours(),
         minute = now.getMinutes(),
-        second = now.getSeconds();
+        second = now.getSeconds()
     switch (type) {
         case 1:
-            return month + "月" + date + "日" + " " + hour + ":" + minute;
-            break;
+            return month + "月" + date + "日" + " " + hour + ":" + minute
+            break
         case 2:
-            return month + "月" + date + "日" + "（周" + day + "）";
-            break;
+            return month + "月" + date + "日" + "（周" + day + "）"
+            break
         case 3:
-            return month + "月" + date + "日" + "（周" + day + "）" + " " + hour + ":" + minute;
-            break;
+            return month + "月" + date + "日" + "（周" + day + "）" + " " + hour + ":" + minute
+            break
         default :
-            return month + "-" + date + " " + hour + ":" + minute;
-            break;
+            return month + "-" + date + " " + hour + ":" + minute
+            break
     }
 }
 
@@ -242,7 +200,7 @@ function formatDateTime(timestamp, type) {
  * @returns {boolean}
  */
 function isPC() {
-    return !(browser.versions.android || browser.versions.ios || browser.versions.iPhone || browser.versions.iPad);
+    return !(browser.versions.android || browser.versions.ios || browser.versions.iPhone || browser.versions.iPad)
 
 }
 
@@ -251,7 +209,7 @@ function isPC() {
  * @returns {boolean}
  */
 function isAndroid() {
-    return !!browser.versions.android;
+    return !!browser.versions.android
 
 }
 
@@ -260,7 +218,7 @@ function isAndroid() {
  * @returns {boolean}
  */
 function isIOS() {
-    return !!(browser.versions.ios || browser.versions.iPhone || browser.versions.iPad);
+    return !!(browser.versions.ios || browser.versions.iPhone || browser.versions.iPad)
 
 }
 
@@ -269,7 +227,7 @@ function isIOS() {
  * @returns {boolean}
  */
 function isWeiXin() {
-    return !!browser.versions.weixin;
+    return !!browser.versions.weixin
 }
 
 /**
@@ -278,10 +236,10 @@ function isWeiXin() {
  */
 function isOperateValid() {
     if (isWeiXin() || true) {
-        return true;
+        return true
     }
-// messenger('当前运行环境下不能使用语音或图片功能', 'info', 1000);
-    return false;
+// messenger('当前运行环境下不能使用语音或图片功能', 'info', 1000)
+    return false
 }
 
 /**
@@ -291,8 +249,8 @@ function isOperateValid() {
  * @returns {boolean}
  */
 function isDefined(obj) {
-//return obj !== undefined;
-    return obj != null; // 要同时判断 null 和 undefined
+//return obj !== undefined
+    return obj != null // 要同时判断 null 和 undefined
 }
 
 /**
@@ -303,9 +261,9 @@ function isDefined(obj) {
  */
 function isEmptyObj(obj) {
     for (let s in obj) {
-        return false;
+        return false
     }
-    return true;
+    return true
 }
 
 /**
@@ -315,8 +273,8 @@ function isEmptyObj(obj) {
  * @returns {boolean}
  */
 function isEmail(str) {
-    let reg = /^([a-zA-Z0-9]+[_|/_|/.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|/_|/.]?)*[a-zA-Z0-9]+(.[a-zA-Z]{2,3})$/;
-    return reg.test(str);
+    let reg = /^([a-zA-Z0-9]+[_|/_|/.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|/_|/.]?)*[a-zA-Z0-9]+(.[a-zA-Z]{2,3})$/
+    return reg.test(str)
 }
 
 /**
@@ -326,8 +284,8 @@ function isEmail(str) {
  * @returns {boolean}
  */
 function isPhone(str) {
-    let reg = /^0?1[3|4|5|7|8][0-9]\d{8}$/;
-    return reg.test(str);
+    let reg = /^0?1[3|4|5|7|8][0-9]\d{8}$/
+    return reg.test(str)
 }
 
 /**
@@ -337,8 +295,8 @@ function isPhone(str) {
  * @returns {boolean}
  */
 function isTelephone(str) {
-    let reg = /^(\(\d{3,4}\)|\d{3,4}-|\s)?\d{7,14}$/; // 电话格式验证
-    return reg.test(str);
+    let reg = /^(\(\d{3,4}\)|\d{3,4}-|\s)?\d{7,14}$/ // 电话格式验证
+    return reg.test(str)
 }
 
 /**
@@ -348,24 +306,26 @@ function isTelephone(str) {
  * @param {boolean} [state] 提示状态：true 成功；false 失败
  * @param {number} [time] 显示时间
  */
-let messengerTimeOutID;
+let messengerTimeOutID
 function messenger(msg, state, time) {
     let after = isDefined(time) ? time : 2000,
-        icon = $("#messenger i");
-    $("#messenger p").html(msg);
+        icon = $("#messenger i")
+    $("#messenger p").html(msg)
     if (isDefined(state) && state === false) {
-        icon.removeClass('weui-icon-info-circle').addClass('weui-icon-cancel'); // fail
+        icon.removeClass('weui-icon-info-circle').addClass('weui-icon-cancel') // fail
     } else if (state === true) {
-        icon.removeClass('weui-icon-cancel weui-icon-info-circle'); // true
+        icon.removeClass('weui-icon-cancel weui-icon-info-circle') // true
     } else {
-        icon.removeClass('weui-icon-cancel').addClass('weui-icon-info-circle'); // info
+        icon.removeClass('weui-icon-cancel').addClass('weui-icon-info-circle') // info
     }
-    $("#messenger").show();
-    clearTimeout(messengerTimeOutID);
+    $("#messenger").show()
+    clearTimeout(messengerTimeOutID)
     messengerTimeOutID = setTimeout(function () {
-        $("#messenger").hide();
-    }, after);
+        $("#messenger").hide()
+    }, after)
 }
+
+let loading = $("#loading")
 
 
 export default {
@@ -373,5 +333,6 @@ export default {
     isDefined,
     getRequest,
     getQueryString,
-    messenger
+    messenger,
+    loading
 }

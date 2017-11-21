@@ -15,13 +15,31 @@
 <script>
     import DownloadOrOpen from '@/components/common/DownloadOrOpen'
     import Url from '@/global/Url'
+    import Global from '@/global/Global'
 
     export default {
         name: 'RecommendBlock',
         data() {
             return {
                 recommend: {
-                    list: []
+                    "list": [
+                        {
+                            "cover": "http://img.check.hetunlive.com/content/cover/367e24c09dc54cf783d22170f5cc5505.jpg",
+                            "title": "谢谢！"
+                        },
+                        {
+                            "cover": "http://img.check.hetunlive.com/content/cover/3a3836424b9d484ab757e0abf80d3627.jpg",
+                            "title": "别人家养的棉花糖，大概是成精后的猪妖"
+                        },
+                        {
+                            "cover": "http://img.check.hetunlive.com/videoclips/operateUser/d180eb450497426da32e5ec3bd93de96.png",
+                            "title": "贫穷限制了我的想像力"
+                        },
+                        {
+                            "cover": "http://img.check.hetunlive.com/content/cover/d6987239e7f941aaa2c87c46677108fc.jpg",
+                            "title": "你开心就好"
+                        }
+                    ]
                 }
             }
         },
