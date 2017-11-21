@@ -11,11 +11,23 @@ export default class Wechat {
         return Wechat._instance
     }
 
+    debug = false
+    jsApiList = [
+        'onMenuShareTimeline',
+        'onMenuShareAppMessage',
+        'chooseImage',
+        'previewImage',
+        'uploadImage',
+        'downloadImage',
+        'getLocation'
+    ]
     share = {
         title: '鬼知道 - 探索未知世界',
         link: 'http://www.hetunlive.com/occult/index.html#/',
         imgUrl: '',
-        desc: ''
+        desc: '',
+        type: '',
+        dataUrl: ''
     }
 
     constructor() {
@@ -23,8 +35,8 @@ export default class Wechat {
     }
 
     config(config) {
-        config.debug = false
-        config.jsApiList = ['onMenuShareTimeline', 'onMenuShareAppMessage', 'chooseImage', 'previewImage', 'uploadImage', 'downloadImage', 'getLocation']
+        config.debug = this.debug
+        config.jsApiList = this.jsApiList
         wx.config(config)
         wx.ready(() => {
             // config信息验证后会执行ready方法，所有接口调用都必须在config接口获得结果之后，
