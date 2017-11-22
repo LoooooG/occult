@@ -12,6 +12,8 @@
         data() {
             return {
                 options: {
+                    m3u8: "", //请替换成实际可用的播放地址
+                    flv: "", //请替换成实际可用的播放地址
                     mp4: "", //请替换成实际可用的播放地址
                     autoplay: false,  //iOS下safari浏览器，以及大部分移动端浏览器是不开放视频自动播放这个能力的
                     coverpic: {style: "cover", src: ""},
@@ -30,7 +32,9 @@
             if (height && width && width > height) {
                 this.options.height = document.body.offsetWidth * height / width
             }
-            this.options.mp4 = this.video.url
+            this.options.m3u8 = this.video.url.toLowerCase().includes('m3u8') ? this.video.url : ''
+            this.options.flv = this.video.url.toLowerCase().includes('flv') ? this.video.url : ''
+            this.options.mp4 = this.video.url.toLowerCase().includes('mp4') ? this.video.url : ''
             // this.options.mp4 = 'http://precc.hetunlive.com/iup/mediacheck/4c0c6a3b9910477f9a7a1e48a4a09c53.mp4'
             this.options.coverpic.src = this.video.cover
 

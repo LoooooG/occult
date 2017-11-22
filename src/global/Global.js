@@ -155,7 +155,7 @@ function getJsonLength(jsonObj) {
  * @returns {string}
  */
 function formatDate(dtime) {
-    let now = new Date(parseInt(dtime) * 1000)
+    let now = new Date(Number.parseInt(dtime) * 1000)
     let year = now.getFullYear()
     let month = now.getMonth() + 1
     let date = now.getDate()
@@ -171,7 +171,7 @@ function formatDate(dtime) {
  */
 function formatDateTime(timestamp, type) {
     let show_day = ['日', '一', '二', '三', '四', '五', '六'],
-        now = (isDefined(timestamp)) ? new Date(parseInt(timestamp) * 1000) : new Date(),
+        now = (isDefined(timestamp)) ? new Date(Number.parseInt(timestamp) * 1000) : new Date(),
         year = now.getFullYear(),
         month = now.getMonth() + 1,
         date = now.getDate(),

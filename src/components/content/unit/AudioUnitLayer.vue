@@ -48,8 +48,8 @@
                 }
             },
             canPlay() {
-                progress.max = parseInt(player.duration)
-                this.duration = parseInt(player.duration).formatTime()
+                progress.max = Number.parseInt(player.duration)
+                this.duration = Number.parseInt(player.duration).formatTime()
                 this.current = '00:00'
             },
             play() {
@@ -59,8 +59,8 @@
                 this.btn = PlayBtn
             },
             timeupdate() {
-                progress.value = parseInt(player.currentTime)
-                this.current = parseInt(player.currentTime).formatTime()
+                progress.value = Number.parseInt(player.currentTime)
+                this.current = Number.parseInt(player.currentTime).formatTime()
             }
         }
     }

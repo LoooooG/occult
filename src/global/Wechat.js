@@ -23,10 +23,10 @@ export default class Wechat {
     ]
     share = {
         title: '鬼知道 - 探索未知世界',
-        link: 'http://www.hetunlive.com/occult/index.html#/',
-        imgUrl: '',
-        desc: '',
-        type: '',
+        link: 'http://cdn.hetunlive.com/share/media/index.html#/',
+        imgUrl: 'http://img.check.hetunlive.com/videoclips/operateUser/ed96d707a726463ab9090b33d60958e7.jpg',
+        desc: '邀请你来观看一篇神奇的帖子!胆小慎入！',
+        type: 'link',
         dataUrl: ''
     }
 
@@ -55,17 +55,13 @@ export default class Wechat {
      * @param type 分享类型,music、video或link，不填默认为link
      * @param dataUrl 如果type是music或video，则要提供数据链接，默认为空
      */
-    setShareData(title, link, imgUrl, desc, type, dataUrl) {
+    setShareData(title, link, imgUrl, desc, type = 'link', dataUrl = '') {
         this.share.title = title
         this.share.link = link
         this.share.imgUrl = imgUrl
         this.share.desc = desc
-        if (Global.isDefined(type)) {
-            this.share.type = type
-        }
-        if (Global.isDefined(dataUrl)) {
-            this.share.dataUrl = dataUrl
-        }
+        this.share.type = type
+        this.share.dataUrl = dataUrl
         this.initOnMenuShare()
     }
 
