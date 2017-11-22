@@ -69,6 +69,9 @@
                         case "2":
                             mediaType = 'music'
                             break
+                        default:
+                            mediaType = 'link'
+                            break
                     }
                     Wechat.getInstance().setShareData(data.title,
                         data.shareUrl, data.portrait, data.content, mediaType, data.dataUrl)
