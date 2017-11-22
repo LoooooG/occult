@@ -34,7 +34,7 @@
         created() {
             // 获取内容详情
             Global.loading.show()
-            let param = Url.getCommonParam();
+            let param = Url.getCommonParam()
             param.id = Global.getQueryString('id') || 608
             this.getContent(param)
             param.client = 'WEB'
