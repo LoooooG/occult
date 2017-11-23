@@ -1,7 +1,7 @@
 <template>
     <div class="base-margin-left-right">
         <ul class="text-container">
-            <li class="text-item" v-for="item in article.list"><div>{{item.text}}</div></li>
+            <li class="text-item" v-for="item in article.list"><div v-html="getText(item.text)"></div></li>
         </ul>
     </div>
 </template>
@@ -16,6 +16,12 @@
             }
         },
         mounted() {
+            console.log(this.article);
+        },
+        methods: {
+            getText(text) {
+                return text.replace(/[\n]/g,'<br/>')
+            }
         }
     }
 </script>
