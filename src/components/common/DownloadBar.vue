@@ -15,12 +15,11 @@
     }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
     .download_box {
-    }
-
-    .download_box img {
-        width: 100%;
-        height: auto;
+        img {
+            width: 100%;
+            height: auto;
+        }
     }
 </style>

@@ -1,4 +1,6 @@
-let isTestServer = true
+import Global from '@/global/Global'
+
+let isTestServer = false
 
 export default {
     getCommonParam() {
@@ -10,7 +12,7 @@ export default {
             URL_TECENT_DOWNLOAD: 'http://android.myapp.com/myapp/detail.htm?apkName=com.hetun.occult&ADTAG=mobile',
             URL_START_APP: 'hetunoccult://?type=1'
         },
-        isTestServer ?
+        isTestServer || Global.getQueryString('debug') ?
             {
                 URL_RECOMMEND: 'http://mediacheck.hetunlive.com/media/content/listWebRecommend.do',
                 URL_MEDIA_GET: 'https://mediacheck.hetunlive.com/media/get.do',

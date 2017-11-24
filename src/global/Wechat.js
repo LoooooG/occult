@@ -60,8 +60,8 @@ export default class Wechat {
         this.share.link = link
         this.share.imgUrl = imgUrl
         this.share.desc = desc
-        this.share.type = type
-        this.share.dataUrl = dataUrl
+        // this.share.type = type
+        // this.share.dataUrl = dataUrl
         this.initOnMenuShare()
     }
 
