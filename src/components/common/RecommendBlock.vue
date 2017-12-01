@@ -4,7 +4,7 @@
             <div class="title">大家都在看</div>
         </div>
         <ul class="list-container" v-if="recommend.list.length > 0">
-            <li class="item" v-for="item in recommend.list" @click="go('detail')">
+            <li class="item" v-for="item in recommend.list" @click="go('detail', {contentId: item.contentId})">
                 <div class="cover" :style="{'background-image': 'url(' + item.cover + ')'}"></div>
                 <span class="title">{{item.title}}</span>
             </li>

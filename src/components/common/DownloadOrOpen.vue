@@ -23,8 +23,10 @@
                 if (params) {
                     uri += '&' +  Global.json2param(params)
                 }
-                uri += '&contentId=' + Wechat.getInstance().getContentId()
-                console.log(Url.urlList.URL_START_APP + uri)
+                if (uri.indexOf('contentId') === -1) {
+                    uri += '&contentId=' + Wechat.getInstance().getContentId()
+                }
+                console.log(Url.urlList.URL_START_APP + uri, 'OpenApp')
                 if (Global.isWeiXin()) {
                     location.href = Url.urlList.URL_TECENT_DOWNLOAD
                 } else {
