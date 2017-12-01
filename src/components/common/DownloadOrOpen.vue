@@ -25,7 +25,6 @@
                 }
                 uri += '&contentId=' + Wechat.getInstance().getContentId()
                 console.log(Url.urlList.URL_START_APP + uri)
-                return
                 if (Global.isWeiXin()) {
                     location.href = Url.urlList.URL_TECENT_DOWNLOAD
                 } else {
