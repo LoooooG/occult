@@ -48,6 +48,7 @@
                     // success
                     Global.loading.hide()
                     this.content = response.body.data
+                    Wechat.getInstance().setContentId(this.content.id)
                     console.log(this.content, 'ContentLayer')
                     // console.log(response)
                 }).catch(response => {

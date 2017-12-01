@@ -11,6 +11,7 @@ export default class Wechat {
         return Wechat._instance
     }
 
+    contentId = 608
     debug = false
     jsApiList = [
         'onMenuShareTimeline',
@@ -44,6 +45,14 @@ export default class Wechat {
             // 对于用户触发时才调用的接口，则可以直接调用，不需要放在ready函数中。
             this.initOnMenuShare()
         })
+    }
+
+    setContentId(id) {
+        this.contentId = id
+    }
+
+    getContentId() {
+        return this.contentId
     }
 
     /**

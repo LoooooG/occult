@@ -4,7 +4,7 @@
             <div class="title">大家都在看</div>
         </div>
         <ul class="list-container" v-if="recommend.list.length > 0">
-            <li class="item" v-for="item in recommend.list" @click="go">
+            <li class="item" v-for="item in recommend.list" @click="go('detail')">
                 <div class="cover" :style="{'background-image': 'url(' + item.cover + ')'}"></div>
                 <span class="title">{{item.title}}</span>
             </li>
@@ -24,18 +24,22 @@
                 recommend: {
                     "list": [
                         {
+                            "contentId": 1,
                             "cover": "http://img.check.hetunlive.com/content/cover/367e24c09dc54cf783d22170f5cc5505.jpg",
                             "title": "谢谢！"
                         },
                         {
+                            "contentId": 1,
                             "cover": "http://img.check.hetunlive.com/content/cover/3a3836424b9d484ab757e0abf80d3627.jpg",
                             "title": "别人家养的棉花糖，大概是成精后的猪妖"
                         },
                         {
+                            "contentId": 1,
                             "cover": "http://img.check.hetunlive.com/videoclips/operateUser/d180eb450497426da32e5ec3bd93de96.png",
                             "title": "贫穷限制了我的想像力"
                         },
                         {
+                            "contentId": 1,
                             "cover": "http://img.check.hetunlive.com/content/cover/d6987239e7f941aaa2c87c46677108fc.jpg",
                             "title": "你开心就好"
                         }
@@ -48,6 +52,7 @@
             // 获取大家都在看内容
             this.$http.post(Url.urlList.URL_RECOMMEND, {}).then(response => {
                 this.recommend = response.body.data.recommend
+                console.log(this.recommend, 'RecommendBlock')
             }).catch(response => {
                 console.log(response);
             })

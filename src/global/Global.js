@@ -329,6 +329,7 @@ let loading = $("#loading")
 
 
 export default {
+    json2param,
     isWeiXin,
     isDefined,
     getRequest,

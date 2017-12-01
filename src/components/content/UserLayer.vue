@@ -1,8 +1,8 @@
 <template>
     <div class="user_layer base-margin-left-right clearfix">
-        <img class="portrait" :src="getPortrait" alt="" @click="go">
-        <span class="nickname" @click="go">{{getNickname}}</span>
-        <span class="follow" @click="go">+关注</span>
+        <img class="portrait" :src="getPortrait" alt="" @click="go('detail')">
+        <span class="nickname" @click="go('detail')">{{getNickname}}</span>
+        <span class="follow" @click="go('detail')">+关注</span>
     </div>
 </template>
 

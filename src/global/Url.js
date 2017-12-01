@@ -10,7 +10,7 @@ export default {
         {
             URL_WX_CONFIG: 'https://live.hetunlive.com/share/weixinConfig.do',
             URL_TECENT_DOWNLOAD: 'http://android.myapp.com/myapp/detail.htm?apkName=com.hetun.occult&ADTAG=mobile',
-            URL_START_APP: 'hetunoccult://?type=1'
+            URL_START_APP: 'hetunoccult://?'
         },
         isTestServer || Global.getQueryString('debug') ?
             {

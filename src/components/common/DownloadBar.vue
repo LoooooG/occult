@@ -1,5 +1,5 @@
 <template>
-    <div class="download_box" @click="go">
+    <div class="download_box" @click="go('detail')">
         <img src="../../assets/img/banner.png" alt="">
     </div>
 </template>
