@@ -17,6 +17,7 @@
                     mp4: "", //请替换成实际可用的播放地址
                     autoplay: false,  //iOS下safari浏览器，以及大部分移动端浏览器是不开放视频自动播放这个能力的
                     coverpic: {style: "cover", src: ""},
+                    flash: false, // 是否优先使用 flash 播放视频，
                     width: 480,     //视频的显示宽度，请尽量使用视频分辨率宽度
                     height: 270,    //视频的显示高度，请尽量使用视频分辨率高度
                     listener: (msg) => {
