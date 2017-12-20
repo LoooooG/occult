@@ -62,12 +62,15 @@
         },
         created() {
             // 获取黄历详情
-            Global.loading.show()
-            let param = Url.getCommonParam()
-            param.day = Global.getQueryString('day') || '20171220'
-            this.getAlmanac(param)
+            this.enterAlmanac(Global.getQueryString('day') || new Date().pattern('yyyyMMdd'))
         },
         methods: {
+            enterAlmanac(day) {
+                Global.loading.show()
+                let param = Url.getCommonParam()
+                param.day = day
+                this.getAlmanac(param)
+            },
             getAlmanac(param) {
                 this.$http.post(Url.urlList.URL_ALMANAC_GET, param).then(response => {
                     // success
@@ -87,14 +90,13 @@
     }
 </script>
 
-<style>
-    html, body {
-        background: #fff;
-    }
+<style type="scss" scoped="">
 
     .almanac-container {
         max-width: 1280px;
         margin: 0 auto;
         overflow-x: hidden;
+        overflow-y: hidden;
+        background: #fff;
     }
 </style>

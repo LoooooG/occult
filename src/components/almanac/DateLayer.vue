@@ -2,20 +2,25 @@
     <div class="date-layer">
         <div class="select-block">
             <label class="date-select" for="dateValue">{{getYear}}年{{getMonth}}月</label>
-            <input id="dateValue" type="date" value="">
+            <input v-model="selectDate" id="dateValue" type="date" value="">
         </div>
         <div class="switch-block clearfix">
-            <div class="switch-previous"></div>
+            <div class="switch-previous" :class="{'isShow': date.previous}" @click="goPrevious"></div>
             <div class="switch-day">{{getDay}}</div>
-            <div class="switch-next"></div>
+            <div class="switch-next" :class="{'isShow': date.next}" @click="goNext"></div>
         </div>
         <div class="info-block">{{getInfo}}</div>
     </div>
 </template>
 
 <script>
+    import Global from '@/global/Global'
+
     export default {
         name: 'DateLayer',
+        data() {
+            return {selectDate: ""}
+        },
         props: {
             date: {
                 type: Object,
@@ -36,8 +41,25 @@
                 return this.date.alYear + " " + this.date.alMonth + this.date.alDay + " " + this.date.weekName
             }
         },
+        watch: {
+            selectDate(val, oldVal) {
+                this.$parent.enterAlmanac(new Date().pattern('yyyyMMdd', Date.parse(val)))
+            }
+        },
         mounted() {
             console.log(this.date, "DateLayer")
+        },
+        methods: {
+            goNext() {
+                if (this.date.next) {
+                    this.$parent.enterAlmanac(new Date().pattern('yyyyMMdd', this.date.timestamp + 24 * 60 * 60 * 1000))
+                }
+            },
+            goPrevious() {
+                if (this.date.previous) {
+                    this.$parent.enterAlmanac(new Date().pattern('yyyyMMdd', this.date.timestamp - 24 * 60 * 60 * 1000))
+                }
+            }
         }
     }
 </script>
@@ -50,6 +72,7 @@
         padding: 10px 25px;
         .select-block {
             text-align: center;
+            position: relative;
             .date-select {
                 position: relative;
                 color: $grey;
@@ -62,7 +85,9 @@
                 }
             }
             input {
-                display: none;
+                display: block;
+                position: absolute;
+                left: -9999px;
             }
         }
         .switch-block {
@@ -82,10 +107,12 @@
                 &:before {
                     @include border-arrow(20px, 1px, $primary);
                     top: 39%;
+                    display: none;
                 }
                 &:after {
                     @include border-arrow(20px, 1px, $black);
                     top: 38%;
+                    display: none;
                 }
             }
             .switch-previous {
@@ -98,6 +125,14 @@
                 &:before, &:after {
                     transform: rotate(45deg);
                     right: 0;
+                }
+            }
+            .switch-previous.isShow, .switch-next.isShow {
+                &:before {
+                    display: block;
+                }
+                &:after {
+                    display: block;
                 }
             }
 
