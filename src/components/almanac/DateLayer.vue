@@ -54,12 +54,14 @@
             goNext() {
                 if (this.date.next) {
                     this.date.timestamp += 24 * 60 * 60 * 1000
+                    this.selectDate = new Date().pattern('yyyy-MM-dd', this.date.timestamp)
                     this.$parent.enterAlmanac(new Date().pattern('yyyyMMdd', this.date.timestamp))
                 }
             },
             goPrevious() {
                 if (this.date.previous) {
                     this.date.timestamp -= 24 * 60 * 60 * 1000
+                    this.selectDate = new Date().pattern('yyyy-MM-dd', this.date.timestamp)
                     this.$parent.enterAlmanac(new Date().pattern('yyyyMMdd', this.date.timestamp))
                 }
             }

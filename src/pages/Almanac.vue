@@ -27,7 +27,7 @@
                         alMonth: '',
                         alDay: '',
                         weekName: '',
-                        timestamp: 0,
+                        timestamp: Date.parse(new Date()),
                         previous: true,
                         next: false
                     },
