@@ -98,5 +98,9 @@
         overflow-x: hidden;
         overflow-y: hidden;
         background: #fff;
+        &::-webkit-scrollbar {
+            width: 0;
+            height: 0
+        }
     }
 </style>

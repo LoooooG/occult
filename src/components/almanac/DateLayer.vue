@@ -19,7 +19,7 @@
     export default {
         name: 'DateLayer',
         data() {
-            return {selectDate: ""}
+            return {selectDate: new Date().pattern('yyyy-MM-dd', this.date.timestamp)}
         },
         props: {
             date: {
@@ -43,21 +43,24 @@
         },
         watch: {
             selectDate(val, oldVal) {
+                console.log(`val: ${val}, oldVal: ${oldVal}`);
                 this.$parent.enterAlmanac(new Date().pattern('yyyyMMdd', Date.parse(val)))
             }
         },
         mounted() {
-            console.log(this.date, "DateLayer")
+            console.log(this.selectDate, "DateLayer")
         },
         methods: {
             goNext() {
                 if (this.date.next) {
-                    this.$parent.enterAlmanac(new Date().pattern('yyyyMMdd', this.date.timestamp + 24 * 60 * 60 * 1000))
+                    this.date.timestamp += 24 * 60 * 60 * 1000
+                    this.$parent.enterAlmanac(new Date().pattern('yyyyMMdd', this.date.timestamp))
                 }
             },
             goPrevious() {
                 if (this.date.previous) {
-                    this.$parent.enterAlmanac(new Date().pattern('yyyyMMdd', this.date.timestamp - 24 * 60 * 60 * 1000))
+                    this.date.timestamp -= 24 * 60 * 60 * 1000
+                    this.$parent.enterAlmanac(new Date().pattern('yyyyMMdd', this.date.timestamp))
                 }
             }
         }
@@ -80,14 +83,14 @@
                 &:after {
                     @include border-arrow(4px, 1px, $grey);
                     transform: rotate(135deg);
-                    top: 25%;
+                    top: 20%;
                     margin-left: 10px;
                 }
             }
             input {
                 display: block;
                 position: absolute;
-                left: -9999px;
+                left: -9999px
             }
         }
         .switch-block {
