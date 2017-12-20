@@ -1,0 +1,100 @@
+<template>
+    <div class="almanac-container" style="display: block">
+        <data-layer :date="almanac.date"></data-layer>
+        <geomancy-layer :geomancy="almanac.geomancy"></geomancy-layer>
+        <prediction-layer :prediction="almanac.prediction"></prediction-layer>
+        <hours-layer :hours="almanac.hours"></hours-layer>
+    </div>
+</template>
+
+<script>
+    import Url from '@/global/Url'
+    import Global from '@/global/Global'
+    import Wechat from '@/global/Wechat'
+
+    import DataLayer from '@/components/almanac/DateLayer'
+    import GeomancyLayer from '@/components/almanac/GeomancyLayer'
+    import PredictionLayer from '@/components/almanac/PredictionLayer'
+    import HoursLayer from '@/components/almanac/HoursLayer'
+
+    export default {
+        name: 'Almanac',
+        data() {
+            return {
+                almanac: {
+                    date: {
+                        alYear: '',
+                        alMonth: '',
+                        alDay: '',
+                        weekName: '',
+                        timestamp: 0,
+                        previous: true,
+                        next: false
+                    },
+                    geomancy: {
+                        jrbz: {},
+                        jrts: [],
+                        jsfw: [],
+                        pzbj: [],
+                        srcs: [],
+                        wxbg: []
+                    },
+                    prediction: {
+                        compatibility: "",
+                        incompatibility: ""
+                    },
+                    hours: [
+                        {
+                            js: "",
+                            sc: "",
+                            sf: "",
+                            zc: ""
+                        }
+                    ]
+                }
+            }
+        },
+        components: {
+            DataLayer,
+            GeomancyLayer,
+            PredictionLayer,
+            HoursLayer
+        },
+        created() {
+            // 获取黄历详情
+            Global.loading.show()
+            let param = Url.getCommonParam()
+            param.day = Global.getQueryString('day') || '20171220'
+            this.getAlmanac(param)
+        },
+        methods: {
+            getAlmanac(param) {
+                this.$http.post(Url.urlList.URL_ALMANAC_GET, param).then(response => {
+                    // success
+                    Global.loading.hide()
+                    this.almanac = response.body.data
+                    this.almanac.date.previous = this.almanac.previous
+                    this.almanac.date.next = this.almanac.next
+                    console.log(this.almanac, 'Almanac')
+                    // console.log(response)
+                }).catch(response => {
+                    // error
+                    Global.loading.hide()
+                    Global.messenger(response.status + ': ' + response.statusText, false)
+                })
+            }
+        }
+    }
+</script>
+
+<style>
+    html, body {
+        background: #fff;
+    }
+
+    .almanac-container {
+        max-width: 1280px;
+        margin: 0 auto;
+        overflow-x: hidden;
+    }
+</style>

@@ -189,6 +189,16 @@ a:active .blue {
   transform: scale($ratio);
 }
 
+@mixin border-arrow($len, $blur, $color) {
+  content: ' ';
+  width: $len;
+  height: $len;
+  position: absolute;
+  border-width: $blur $blur 0 0;
+  border-color: $color;
+  border-style: solid;
+}
+
 .text-ellipsis {
   @include single-text-ellipsis;
 }
