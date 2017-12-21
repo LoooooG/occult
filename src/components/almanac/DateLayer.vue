@@ -2,7 +2,8 @@
     <div class="date-layer">
         <div class="select-block">
             <label class="date-select" for="dateValue">{{getYear}}年{{getMonth}}月</label>
-            <input v-model="selectDate" id="dateValue" type="date" value="">
+            <input v-model="selectDate" id="dateValue" type="date" value=""
+                   :max="getEnd" :min="getStart">
         </div>
         <div class="switch-block clearfix">
             <div class="switch-previous" :class="{'isShow': date.previous}" @click="goPrevious"></div>
@@ -39,6 +40,12 @@
             },
             getInfo() {
                 return this.date.alYear + " " + this.date.alMonth + this.date.alDay + " " + this.date.weekName
+            },
+            getStart() {
+                return this.date.startDay
+            },
+            getEnd() {
+                return this.date.endDay
             }
         },
         watch: {

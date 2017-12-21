@@ -18,12 +18,14 @@ export default {
                 URL_MEDIA_GET: 'https://mediacheck.hetunlive.com/media/get.do',
                 URL_MEDIA_SHARE: 'http://mediacheck.hetunlive.com/media/share.do',
                 URL_ALMANAC_GET: 'http://mediacheck.hetunlive.com/media/extend/getAlmanac.do',
+                URL_ALMANAC_SHARE: 'http://cdn.hetunlive.com/share/media/index.html#/Almanac?debug=true&day='
             } :
             {
                 URL_RECOMMEND: 'http://media.hetunlive.com/media/content/listWebRecommend.do',
                 URL_MEDIA_GET: 'https://media.hetunlive.com/media/get.do',
                 URL_MEDIA_SHARE: 'http://media.hetunlive.com/media/share.do',
                 URL_ALMANAC_GET: 'http://media.hetunlive.com/media/extend/getAlmanac.do',
+                URL_ALMANAC_SHARE: 'http://cdn.hetunlive.com/share/media/index.html#/Almanac?day='
             }
     )
 }

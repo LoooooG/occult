@@ -29,7 +29,9 @@
                         weekName: '',
                         timestamp: Date.parse(new Date()),
                         previous: true,
-                        next: false
+                        next: false,
+                        endDay: Date.parse(new Date("2017-01-01")),
+                        startDay: Date.parse(new Date("2021-12-31"))
                     },
                     geomancy: {
                         jrbz: {},
@@ -78,6 +80,9 @@
                     this.almanac = response.body.data
                     this.almanac.date.previous = this.almanac.previous
                     this.almanac.date.next = this.almanac.next
+                    this.almanac.date.startDay = new Date().pattern('yyyy-MM-dd', this.almanac.startDay)
+                    this.almanac.date.endDay = new Date().pattern('yyyy-MM-dd', this.almanac.endDay)
+                    this.setShareData(this.almanac)
                     console.log(this.almanac, 'Almanac')
                     // console.log(response)
                 }).catch(response => {
@@ -85,6 +90,14 @@
                     Global.loading.hide()
                     Global.messenger(response.status + ': ' + response.statusText, false)
                 })
+            },
+            setShareData(almanac) {
+                let title = new Date().pattern('yyyy年MM月dd日', almanac.date.timestamp) + almanac.date.alYear
+                    + " " + almanac.date.alMonth + almanac.date.alDay + " " + almanac.date.weekName
+                let link = Url.URL_ALMANAC_SHARE + new Date().pattern('yyyyMMdd', almanac.date.timestamp)
+                let imgUrl = 'http://img.hetunlive.com/system/logo/occult/yj.jpg'
+                let desc = '宜：' + almanac.prediction.compatibility + '；忌：' + almanac.prediction.incompatibility
+                Wechat.getInstance().setShareData(title, link, imgUrl, desc)
             }
         }
     }
