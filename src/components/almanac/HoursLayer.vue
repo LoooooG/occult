@@ -14,6 +14,9 @@
                 <div class="col-js">{{item.js}}</div>
             </li>
         </ul>
+        <div class="qrcode-layer">
+            <img src="../../assets/img/qrcode_almanac.png" alt="">
+        </div>
     </div>
 </template>
 
@@ -77,6 +80,13 @@
         }
         .col-js {
             width: 40%;
+        }
+        .qrcode-layer {
+            margin: 20px 40px;
+            img {
+                width: 100%;
+                height: auto;
+            }
         }
     }
 </style>
