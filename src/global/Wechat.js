@@ -65,6 +65,8 @@ export default class Wechat {
      * @param dataUrl 如果type是music或video，则要提供数据链接，默认为空
      */
     setShareData(title, link, imgUrl, desc, type = 'link', dataUrl = '') {
+        console.log('setShareData title: ' + title + ', link: ' + link
+            + ', imgUrl: ' + imgUrl + ', desc: ' + desc, 'Wechat');
         this.share.title = title
         this.share.link = link
         this.share.imgUrl = imgUrl
