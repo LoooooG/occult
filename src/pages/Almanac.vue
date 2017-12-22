@@ -96,6 +96,9 @@
                 let title = new Date().pattern('yyyy年MM月dd日', almanac.date.timestamp) + " " + almanac.date.alYear
                     + "年 " + almanac.date.alMonth + almanac.date.alDay + " " + almanac.date.weekName
                 let link = Url.urlList.URL_ALMANAC_SHARE + new Date().pattern('yyyyMMdd', almanac.date.timestamp)
+                if (Global.isDefined(Global.getQueryString('origin'))) {
+                    link += '&origin=' + Global.getQueryString('origin')
+                }
                 let imgUrl = 'http://img.hetunlive.com/system/logo/occult/yj.jpg'
                 let desc = '宜：' + almanac.prediction.compatibility + '；忌：' + almanac.prediction.incompatibility
                 Wechat.getInstance().setShareData(title, link, imgUrl, desc)
