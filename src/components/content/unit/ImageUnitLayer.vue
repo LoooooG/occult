@@ -35,7 +35,7 @@
         },
         computed: {
             isWeiXin() {
-                return Global.isWeiXin()
+                return false
             },
             isEven() {
                 return this.image.list.length === 2 || this.image.list.length === 4

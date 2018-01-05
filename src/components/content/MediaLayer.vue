@@ -15,7 +15,10 @@
                 v-else-if="getType == 4">ARTICLE</article-media-layer>
         <a-d-media-layer
                 :media="media"
-                v-else="getType == 5">AD</a-d-media-layer>
+                v-else-if="getType == 5">AD</a-d-media-layer>
+        <image-media-layer
+                :media="media"
+                v-else="getType == 6">IMAGE</image-media-layer>
     </div>
 </template>
 
