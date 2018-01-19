@@ -3,22 +3,19 @@
         <div v-if="getType == 0" class="base-margin-left-right">加载中...</div>
         <video-media-layer
                 :media="media"
-                v-else-if="getType == 1">VIDEO</video-media-layer>
+                v-else-if="getType == 1 || getType == 7">VIDEO</video-media-layer>
         <audio-media-layer
                 :media="media"
-                v-else-if="getType == 2">AUDIO</audio-media-layer>
+                v-else-if="getType == 2 || getType == 8">AUDIO</audio-media-layer>
         <image-media-layer
                 :media="media"
-                v-else-if="getType == 3">IMAGE</image-media-layer>
+                v-else-if="getType == 3 || getType == 6 || getType == 10">IMAGE</image-media-layer>
         <article-media-layer
                 :media="media"
-                v-else-if="getType == 4">ARTICLE</article-media-layer>
+                v-else-if="getType == 4 || getType == 9">ARTICLE</article-media-layer>
         <a-d-media-layer
                 :media="media"
                 v-else-if="getType == 5">AD</a-d-media-layer>
-        <image-media-layer
-                :media="media"
-                v-else="getType == 6">IMAGE</image-media-layer>
     </div>
 </template>
 
