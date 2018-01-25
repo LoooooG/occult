@@ -8,7 +8,8 @@
             go(target, params) {
                 console.log(target)
                 console.log(params)
-                let uri = ''
+                let from = Global.getQueryString('from') || 'url'
+                let uri = 'from=' + from + '&'
                 switch (target) {
                     case 'detail':
                         uri += 'type=1'
