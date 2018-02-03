@@ -3,6 +3,12 @@ $base-margin: 15px;
 $portrait-side: 35px;
 $content-font: 14px;
 $almanac-fs: 12px 14px 18px 60px;
+$cover-side: 180px;
+
+$uiWidth: 14;
+@function px2Rem($px) {
+  @return $px / $uiWidth * 1rem;
+}
 
 /* Color */
 $primary: #ffd630;

@@ -22,7 +22,7 @@
             }
         },
         mounted() {
-            console.log(this.media);
+            console.log(this.media, 'VideoMediaLayer')
         }
     }
 </script>

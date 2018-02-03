@@ -4,7 +4,7 @@ let isTestServer = false
 
 export default {
     getCommonParam() {
-        return {v: 1.0, pid: 2}
+        return {v: 1.0, pid: 2, version: '1.0.7'}
     },
     urlList: Object.assign(
         {

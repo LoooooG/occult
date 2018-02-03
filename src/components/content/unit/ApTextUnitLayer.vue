@@ -8,7 +8,7 @@
 
 <script>
     export default {
-        name: 'TextUnitLayer',
+        name: 'ApTextUnitLayer',
         props: {
             article: {
                 type: Object,
@@ -16,7 +16,7 @@
             }
         },
         mounted() {
-            console.log(this.article, 'TextUnitLayer');
+            console.log(this.article, 'ApTextUnitLayer')
         },
         methods: {
             getText(text) {
@@ -32,7 +32,7 @@
     .text-container {
         margin-top: 10px;
         .text-item {
-            font-size: 14px;
+            font-size: 16px;
             color: $content-color-sub;
         }
     }

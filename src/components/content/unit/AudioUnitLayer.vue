@@ -37,7 +37,7 @@
         mounted() {
             player = document.querySelector('audio')
             progress = document.querySelector('progress')
-            console.log(this.audio)
+            console.log(this.audio, 'AudioUnitLayer')
         },
         methods: {
             togglePlayer: function () {

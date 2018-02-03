@@ -1,22 +1,27 @@
 <template>
     <div class="base-margin-left-right">
-        <ul class="text-container">
-            <li class="text-item" v-for="item in article.list"><div v-html="getText(item.text)"></div></li>
-        </ul>
+        <div class="description-container">
+            <div class="description-item" v-html="getDescription"></div>
+        </div>
     </div>
 </template>
 
 <script>
     export default {
-        name: 'TextUnitLayer',
+        name: 'ApDescriptionUnitLayer',
         props: {
-            article: {
-                type: Object,
+            description: {
+                type: String,
                 required: true
             }
         },
+        computed: {
+            getDescription() {
+                return this.description
+            }
+        },
         mounted() {
-            console.log(this.article, 'TextUnitLayer');
+            console.log(this.description, 'ApDescriptionUnitLayer')
         },
         methods: {
             getText(text) {
@@ -29,9 +34,9 @@
 <style lang="scss" scoped>
     @import "../../../assets/css/_global";
 
-    .text-container {
+    .description-container {
         margin-top: 10px;
-        .text-item {
+        .description-item {
             font-size: 14px;
             color: $content-color-sub;
         }

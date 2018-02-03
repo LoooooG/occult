@@ -48,6 +48,8 @@
                     // success
                     Global.loading.hide()
                     this.content = response.body.data
+                    this.content.media.description = this.content.description || '描述'
+                    this.content.media.title = this.content.title || '标题'
                     Wechat.getInstance().setContentId(this.content.id)
                     console.log(this.content, 'ContentLayer')
                     // console.log(response)
